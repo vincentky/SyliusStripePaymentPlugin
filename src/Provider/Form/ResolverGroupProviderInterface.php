@@ -1,9 +1,8 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Provider\Form;
+namespace VK\SyliusStripePaymentPlugin\Provider\Form;
 
 use Symfony\Component\Form\FormInterface;
 

@@ -1,12 +1,11 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Form\Transformer;
 
-use SyliusMolliePlugin\Entity\SubscriptionConfigurationInterface;
 use Symfony\Component\Form\DataTransformerInterface;
+use VK\SyliusStripePaymentPlugin\Entity\SubscriptionConfigurationInterface;
 
 final class StripeIntervalTransformer implements DataTransformerInterface
 {

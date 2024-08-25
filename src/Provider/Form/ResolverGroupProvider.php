@@ -1,12 +1,11 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Provider\Form;
+namespace VK\SyliusStripePaymentPlugin\Provider\Form;
 
-use SyliusMolliePlugin\Entity\ProductVariantInterface;
 use Symfony\Component\Form\FormInterface;
+use VK\SyliusStripePaymentPlugin\Entity\ProductVariantInterface;
 
 final class ResolverGroupProvider implements ResolverGroupProviderInterface
 {

@@ -1,11 +1,10 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Entity;
+namespace VK\SyliusStripePaymentPlugin\Entity;
 
-interface MollieSubscriptionConfigurationInterface
+interface SubscriptionConfigurationInterface
 {
     public const SUPPORTED_INTERVAL_STEPS = [
         'days',
@@ -47,5 +46,5 @@ interface MollieSubscriptionConfigurationInterface
 
     public function getPaymentDetailsConfiguration(): array;
 
-    public function getSubscription(): MollieSubscriptionInterface;
+    public function getSubscription(): SubscriptionInterface;
 }

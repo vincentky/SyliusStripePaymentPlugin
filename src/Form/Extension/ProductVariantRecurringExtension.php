@@ -1,13 +1,10 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Form\Extension;
 
 use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType as ProductVariantFormType;
-use SyliusMolliePlugin\Form\Type\MollieIntervalType;
-use SyliusMolliePlugin\Provider\Form\ResolverGroupProviderInterface;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -19,6 +16,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\NotNull;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Valid;
+use VK\SyliusStripePaymentPlugin\Form\Type\StripeIntervalType;
+use VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProviderInterface;
 
 final class ProductVariantRecurringExtension extends AbstractTypeExtension
 {
@@ -33,21 +32,21 @@ final class ProductVariantRecurringExtension extends AbstractTypeExtension
     {
         $builder
             ->add('recurring', CheckboxType::class, [
-                'label' => 'sylius_mollie_plugin.form.product_variant.recurring',
-                'help' => 'sylius_mollie_plugin.form.product_variant.recurring_help',
+                'label' => 'sylius_stripe_payment_plugin.form.product_variant.recurring',
+                'help' => 'sylius_stripe_payment_plugin.form.product_variant.recurring_help',
                 'required' => false,
                 'constraints' => [
                     new NotNull(),
                 ],
             ])
             ->add('times', NumberType::class, [
-                'label' => 'sylius_mollie_plugin.form.product_variant.times',
-                'help' => 'sylius_mollie_plugin.form.product_variant.times_help',
+                'label' => 'sylius_stripe_payment_plugin.form.product_variant.times',
+                'help' => 'sylius_stripe_payment_plugin.form.product_variant.times_help',
                 'required' => false,
                 'constraints' => [
                     new Range([
                         'min' => 2,
-                        'minMessage' => 'sylius_mollie_plugin.times.min_range',
+                        'minMessage' => 'sylius_stripe_payment_plugin.times.min_range',
                         'groups' => ['recurring_product_variant'],
                     ]),
                     new IsNull([
@@ -55,7 +54,7 @@ final class ProductVariantRecurringExtension extends AbstractTypeExtension
                     ]),
                 ],
             ])
-            ->add('interval', MollieIntervalType::class, [
+            ->add('interval', StripeIntervalType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
@@ -66,7 +65,7 @@ final class ProductVariantRecurringExtension extends AbstractTypeExtension
                         'groups' => ['recurring_product_variant'],
                     ]),
                     new NotBlank([
-                        'message' => 'sylius_mollie_plugin.interval.not_blank',
+                        'message' => 'sylius_stripe_payment_plugin.interval.not_blank',
                         'groups' => ['recurring_product_variant'],
                     ]),
                 ],

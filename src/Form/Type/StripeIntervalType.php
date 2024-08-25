@@ -1,11 +1,9 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Form\Type;
+namespace VK\SyliusStripePaymentPlugin\Form\Type;
 
-use SyliusMolliePlugin\Entity\MollieSubscriptionConfigurationInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -14,8 +12,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use VK\SyliusStripePaymentPlugin\Entity\SubscriptionConfigurationInterface;
 
-final class MollieIntervalType extends AbstractType
+final class StripeIntervalType extends AbstractType
 {
     private DataTransformerInterface $transformer;
 
@@ -40,14 +39,14 @@ final class MollieIntervalType extends AbstractType
         ]);
         $builder->add('step', ChoiceType::class, [
             'choices' => array_combine(
-                MollieSubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS,
-                MollieSubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS
+                SubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS,
+                SubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS
             ),
             'label' => false,
             'error_bubbling' => false,
             'choice_label' => function (string $value): string {
                 return sprintf(
-                    'sylius_mollie_plugin.form.product_variant.interval_configuration.steps.%s',
+                    'sylius_stripe_payment_plugin.form.product_variant.interval_configuration.steps.%s',
                     $value
                 );
             },
@@ -59,7 +58,7 @@ final class MollieIntervalType extends AbstractType
     {
         $resolver->setDefaults([
             'compound' => true,
-            'label_format' => 'sylius_mollie_plugin.form.product_variant.interval_configuration.%name%',
+            'label_format' => 'sylius_stripe_payment_plugin.form.product_variant.interval_configuration.%name%',
             'error_bubbling' => true,
         ]);
     }

@@ -1,9 +1,8 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Entity;
+namespace VK\SyliusStripePaymentPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Core\Model\OrderInterface as SyliusOrder;
@@ -12,7 +11,7 @@ use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface MollieSubscriptionInterface extends ResourceInterface
+interface SubscriptionInterface extends ResourceInterface
 {
     public const STATE_NEW = 'new';
 
@@ -72,20 +71,11 @@ interface MollieSubscriptionInterface extends ResourceInterface
 
     public function setStartedAt(?\DateTime $startedAt = null): void;
 
-    /** @return Collection<int, MollieSubscriptionScheduleInterface> */
-    public function getSchedules(): Collection;
-
-    public function addSchedule(MollieSubscriptionScheduleInterface $schedule): void;
-
-    public function removeSchedule(MollieSubscriptionScheduleInterface $schedule): void;
-
     public function getFirstOrder(): ?OrderInterface;
 
     public function getProcessingState(): string;
 
     public function setProcessingState(string $processingState): void;
-
-    public function getScheduleByIndex(int $index): ?MollieSubscriptionScheduleInterface;
 
     public function getPaymentState(): string;
 
@@ -97,7 +87,7 @@ interface MollieSubscriptionInterface extends ResourceInterface
 
     public function resetFailedPaymentCount(): void;
 
-    public function getSubscriptionConfiguration(): MollieSubscriptionConfigurationInterface;
+    public function getSubscriptionConfiguration(): SubscriptionConfigurationInterface;
 
     public function getLastOrder(): ?SyliusOrder;
 }

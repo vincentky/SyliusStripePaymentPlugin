@@ -1,11 +1,10 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Entity;
+namespace VK\SyliusStripePaymentPlugin\Entity;
 
-class MollieSubscriptionConfiguration implements MollieSubscriptionConfigurationInterface
+class SubscriptionConfiguration implements SubscriptionConfigurationInterface
 {
     protected ?int $id = null;
 
@@ -25,9 +24,9 @@ class MollieSubscriptionConfiguration implements MollieSubscriptionConfiguration
 
     protected array $paymentDetailsConfiguration = [];
 
-    protected MollieSubscriptionInterface $subscription;
+    protected SubscriptionInterface $subscription;
 
-    public function __construct(MollieSubscriptionInterface $subscription)
+    public function __construct(SubscriptionInterface $subscription)
     {
         $this->subscription = $subscription;
     }
@@ -77,7 +76,7 @@ class MollieSubscriptionConfiguration implements MollieSubscriptionConfiguration
         return $this->paymentDetailsConfiguration;
     }
 
-    public function getSubscription(): MollieSubscriptionInterface
+    public function getSubscription(): SubscriptionInterface
     {
         return $this->subscription;
     }

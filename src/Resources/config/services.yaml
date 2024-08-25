@@ -2,7 +2,10 @@ imports:
     - { resource: 'services/command_handlers.yaml' }
     - { resource: 'services/factory.yaml' }
     - { resource: 'services/payum.yaml' }
+    - { resource: 'services/event_listener.yaml' }
     - { resource: 'services/state_machine.yaml' }
+    - { resource: 'services/form.yaml' }
+    - { resource: 'services/provider.yaml' }
 
     - { resource: 'services/stripe_checkout_session/api_platform.yaml' }
     - { resource: 'services/stripe_checkout_session/gateway_configuration_types.yaml' }

@@ -1,8 +1,25 @@
 sylius_stripe_payment_plugin:
+    ui:
+        product_variant:
+            tab:
+                recurring: 'Recurring settings'
     payum_gateway_factory:
         stripe_checkout_session: Stripe Checkout Session (with SCA support)
         stripe_js: Stripe JS (with SCA support)
     form:
+        product_variant:
+            recurring: Is recurring?
+            times: Recurring duration
+            times_help: Recurring duration as numeric value describing number of recurrings
+            interval: Recurring interval
+            complete_recurring_price: Divide the product price across all payments?
+            interval_configuration:
+                step: 'Interval step unit'
+                amount: 'Interval step'
+                steps:
+                    days: 'Day(s)'
+                    weeks: 'Week(s)'
+                    months: 'Month(s)'
         gateway_configuration:
             stripe:
                 publishable_key: Publishable key

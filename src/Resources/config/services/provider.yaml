@@ -1,0 +1,6 @@
+services:
+    _defaults:
+        public: true
+
+    VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProvider:
+        class: VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProvider

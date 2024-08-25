@@ -1,4 +1,6 @@
 sylius_stripe_payment_plugin:
+    times:
+        min_range: 'Times cannot be lower than {{ limit }}.'
     stripe:
         webhook_secret_keys:
             not_blank: Please enter stripe webhook secret key.

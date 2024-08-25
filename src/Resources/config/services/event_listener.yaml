@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        public: true
+        
+    VK\SyliusStripePaymentPlugin\EventListener\ProductVariantRecurringOptionsListener:
+        class: VK\SyliusStripePaymentPlugin\EventListener\ProductVariantRecurringOptionsListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.product_variant.form, method: addRecurringOptionsMenu }

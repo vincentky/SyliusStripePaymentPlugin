@@ -1,9 +1,8 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Entity;
+namespace VK\SyliusStripePaymentPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,11 +11,11 @@ use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
 
-class MollieSubscription implements MollieSubscriptionInterface
+class Subscription implements SubscriptionInterface
 {
     protected ?int $id = null;
 
-    protected string $state = MollieSubscriptionInterface::STATE_NEW;
+    protected string $state = SubscriptionInterface::STATE_NEW;
 
     protected ?CustomerInterface $customer = null;
 
@@ -28,9 +27,9 @@ class MollieSubscription implements MollieSubscriptionInterface
 
     protected Collection $schedules;
 
-    protected string $processingState = MollieSubscriptionInterface::PROCESSING_STATE_NONE;
+    protected string $processingState = SubscriptionInterface::PROCESSING_STATE_NONE;
 
-    protected string $paymentState = MollieSubscriptionInterface::PAYMENT_STATE_PENDING;
+    protected string $paymentState = SubscriptionInterface::PAYMENT_STATE_PENDING;
 
     protected int $recentFailedPaymentsCount = 0;
 
@@ -40,11 +39,11 @@ class MollieSubscription implements MollieSubscriptionInterface
     /** @var Collection<int, SyliusOrder> */
     protected Collection $orders;
 
-    protected MollieSubscriptionConfigurationInterface $subscriptionConfiguration;
+    protected SubscriptionConfigurationInterface $subscriptionConfiguration;
 
     public function __construct()
     {
-        $this->subscriptionConfiguration = new MollieSubscriptionConfiguration($this);
+        $this->subscriptionConfiguration = new SubscriptionConfiguration($this);
         $this->payments = new ArrayCollection();
         $this->orders = new ArrayCollection();
         $this->schedules = new ArrayCollection();
@@ -134,21 +133,6 @@ class MollieSubscription implements MollieSubscriptionInterface
         $this->orderItem = $orderItem;
     }
 
-    public function addSchedule(MollieSubscriptionScheduleInterface $schedule): void
-    {
-        if (false === $this->schedules->contains($schedule)) {
-            $this->schedules->add($schedule);
-            $schedule->setMollieSubscription($this);
-        }
-    }
-
-    public function removeSchedule(MollieSubscriptionScheduleInterface $schedule): void
-    {
-        if (true === $this->schedules->contains($schedule)) {
-            $this->schedules->removeElement($schedule);
-        }
-    }
-
     public function getSchedules(): Collection
     {
         return $this->schedules;
@@ -170,14 +154,6 @@ class MollieSubscription implements MollieSubscriptionInterface
     public function setProcessingState(string $processingState): void
     {
         $this->processingState = $processingState;
-    }
-
-    public function getScheduleByIndex(int $index): ?MollieSubscriptionScheduleInterface
-    {
-        return $this->schedules
-            ->filter(fn (MollieSubscriptionScheduleInterface $schedule) => $index === $schedule->getScheduleIndex())
-            ->first()
-        ;
     }
 
     public function getRecentFailedPaymentsCount(): int
@@ -205,7 +181,7 @@ class MollieSubscription implements MollieSubscriptionInterface
         $this->paymentState = $paymentState;
     }
 
-    public function getSubscriptionConfiguration(): MollieSubscriptionConfigurationInterface
+    public function getSubscriptionConfiguration(): SubscriptionConfigurationInterface
     {
         return $this->subscriptionConfiguration;
     }
