@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\Api;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\Api;
 
 use ArrayObject;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractAllAction;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractCreateAction;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractRetrieveAction;
-use FluxSE\PayumStripe\Request\Api\Resource\AllSession;
-use FluxSE\PayumStripe\Request\Api\Resource\CreateSession;
-use FluxSE\PayumStripe\Request\Api\Resource\ExpireSession;
-use FluxSE\PayumStripe\Request\Api\Resource\RetrieveSession;
+use VK\PayumStripe\Action\Api\Resource\AbstractAllAction;
+use VK\PayumStripe\Action\Api\Resource\AbstractCreateAction;
+use VK\PayumStripe\Action\Api\Resource\AbstractRetrieveAction;
+use VK\PayumStripe\Request\Api\Resource\AllSession;
+use VK\PayumStripe\Request\Api\Resource\CreateSession;
+use VK\PayumStripe\Request\Api\Resource\ExpireSession;
+use VK\PayumStripe\Request\Api\Resource\RetrieveSession;
 use Stripe\Checkout\Session;
 use Stripe\Collection;
 use Sylius\Behat\Service\Mocker\MockerInterface;
@@ -29,7 +29,7 @@ final class CheckoutSessionMocker
     public function mockCreateAction(): void
     {
         $mockCreateSession = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.create_session',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.create_session',
             AbstractCreateAction::class
         );
 
@@ -65,7 +65,7 @@ final class CheckoutSessionMocker
     public function mockRetrieveAction(string $status, string $paymentStatus): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.retrieve_session',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.retrieve_session',
             AbstractRetrieveAction::class
         );
 
@@ -99,7 +99,7 @@ final class CheckoutSessionMocker
     public function mockAllAction(string $status): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.all_session',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.all_session',
             AbstractAllAction::class
         );
 
@@ -135,7 +135,7 @@ final class CheckoutSessionMocker
     public function mockExpireAction(): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.expire_session',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.expire_session',
             AbstractRetrieveAction::class
         );
 

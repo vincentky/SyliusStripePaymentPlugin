@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Api\Payum;
+namespace VK\SyliusStripePaymentPlugin\Api\Payum;
 
-use FluxSE\SyliusPayumStripePlugin\Factory\ModelAggregateFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Factory\ModelAggregateFactoryInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Payum;
 use Sylius\Bundle\PayumBundle\Model\GatewayConfigInterface;

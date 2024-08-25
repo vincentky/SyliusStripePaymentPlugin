@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\StateMachine;
+namespace VK\SyliusStripePaymentPlugin\StateMachine;
 
-use FluxSE\SyliusPayumStripePlugin\Command\CancelPayment;
+use VK\SyliusStripePaymentPlugin\Command\CancelPayment;
 use SM\Event\TransitionEvent;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Symfony\Component\Messenger\MessageBusInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Api\Payum;
+namespace VK\SyliusStripePaymentPlugin\Api\Payum;
 
 use Payum\Core\Reply\ReplyInterface;
 use Sylius\Component\Core\Model\PaymentInterface;

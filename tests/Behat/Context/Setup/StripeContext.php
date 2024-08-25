@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Context\Setup;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\EntityManagerInterface;

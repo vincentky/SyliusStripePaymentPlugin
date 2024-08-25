@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Factory;
+namespace VK\SyliusStripePaymentPlugin\Factory;
 
-use FluxSE\PayumStripe\Request\Api\Resource\CustomCallInterface;
+use VK\PayumStripe\Request\Api\Resource\CustomCallInterface;
 
 interface CancelPaymentIntentRequestFactoryInterface
 {

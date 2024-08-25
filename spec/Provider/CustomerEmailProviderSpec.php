@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Provider;
+namespace spec\VK\SyliusStripePaymentPlugin\Provider;
 
-use FluxSE\SyliusPayumStripePlugin\Provider\CustomerEmailProvider;
-use FluxSE\SyliusPayumStripePlugin\Provider\CustomerEmailProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProvider;
+use VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProviderInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Core\Model\OrderInterface;

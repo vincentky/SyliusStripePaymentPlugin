@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Action;
+namespace spec\VK\SyliusStripePaymentPlugin\Action;
 
-use FluxSE\SyliusPayumStripePlugin\Action\ConvertPaymentAction;
-use FluxSE\SyliusPayumStripePlugin\Action\ConvertPaymentActionInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\DetailsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Action\ConvertPaymentAction;
+use VK\SyliusStripePaymentPlugin\Action\ConvertPaymentActionInterface;
+use VK\SyliusStripePaymentPlugin\Provider\DetailsProviderInterface;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Request\Convert;
 use PhpSpec\ObjectBehavior;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Context\Ui\Shop;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Context\Ui\Shop;
 
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext;
@@ -11,8 +11,8 @@ use Stripe\Event;
 use Stripe\PaymentIntent;
 use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Sylius\Behat\Page\Shop\Order\ShowPageInterface;
-use Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\StripeJsMocker;
-use Tests\FluxSE\SyliusPayumStripePlugin\Behat\Page\External\StripePage;
+use Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\StripeJsMocker;
+use Tests\VK\SyliusStripePaymentPlugin\Behat\Page\External\StripePage;
 
 class StripeJsShopContext extends MinkContext implements Context
 {

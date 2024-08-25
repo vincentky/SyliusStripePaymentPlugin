@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Api\PaymentConfiguration;
+namespace VK\SyliusStripePaymentPlugin\Api\PaymentConfiguration;
 
 use Sylius\Bundle\PayumBundle\Model\GatewayConfigInterface;
 use Sylius\Component\Core\Model\PaymentInterface;

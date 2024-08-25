@@ -1,22 +1,22 @@
 services:
 
-  flux_se.sylius_payum_stripe.factory.cancel_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\CancelRequestFactory
+  sylius_payum_stripe.factory.cancel_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\CancelRequestFactory
 
-  flux_se.sylius_payum_stripe.factory.refund_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\RefundRequestFactory
+  sylius_payum_stripe.factory.refund_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\RefundRequestFactory
 
-  flux_se.sylius_payum_stripe.factory.authorize_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\AuthorizeRequestFactory
+  sylius_payum_stripe.factory.authorize_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\AuthorizeRequestFactory
 
-  flux_se.sylius_payum_stripe.factory.capture_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\CaptureRequestFactory
+  sylius_payum_stripe.factory.capture_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\CaptureRequestFactory
 
-  flux_se.sylius_payum_stripe.factory.cancel_payment_intent_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\CancelPaymentIntentRequestFactory
+  sylius_payum_stripe.factory.cancel_payment_intent_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\CancelPaymentIntentRequestFactory
 
-  flux_se.sylius_payum_stripe.factory.all_session_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\AllSessionRequestFactory
+  sylius_payum_stripe.factory.all_session_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactory
 
-  flux_se.sylius_payum_stripe.factory.expire_session_request:
-    class: FluxSE\SyliusPayumStripePlugin\Factory\ExpireSessionRequestFactory
+  sylius_payum_stripe.factory.expire_session_request:
+    class: VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactory

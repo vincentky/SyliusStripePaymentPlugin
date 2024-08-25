@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Provider;
+namespace spec\VK\SyliusStripePaymentPlugin\Provider;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FluxSE\SyliusPayumStripePlugin\Provider\LineItemProviderInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\LineItemsProvider;
-use FluxSE\SyliusPayumStripePlugin\Provider\LineItemsProviderInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\ShippingLineItemProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\LineItemProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\LineItemsProvider;
+use VK\SyliusStripePaymentPlugin\Provider\LineItemsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemProviderInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;

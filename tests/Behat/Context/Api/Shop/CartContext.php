@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Context\Api\Shop;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Context\Api\Shop;
 
 use Behat\Behat\Context\Context;
 use LogicException;
@@ -10,8 +10,8 @@ use Sylius\Behat\Client\ApiClientInterface;
 use Sylius\Behat\Client\ResponseCheckerInterface;
 use Sylius\Behat\Context\Api\Resources;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\StripeCheckoutSessionMocker;
-use Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\StripeJsMocker;
+use Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\StripeCheckoutSessionMocker;
+use Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\StripeJsMocker;
 use Webmozart\Assert\Assert;
 
 final class CartContext implements Context

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Form\Type;
+namespace VK\SyliusStripePaymentPlugin\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 

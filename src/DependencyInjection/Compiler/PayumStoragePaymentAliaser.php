@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\DependencyInjection\Compiler;
+namespace VK\SyliusStripePaymentPlugin\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -18,7 +18,7 @@ final class PayumStoragePaymentAliaser implements CompilerPassInterface
             $serviceDefinition = $container->findDefinition($serviceId);
             $modelClass = $this->findModelClassAttribute($serviceDefinition);
             if ($paymentClass === $modelClass) {
-                $container->setAlias('payum.storage.flux_se_sylius_payment', $serviceId);
+                $container->setAlias('payum.storage.sylius_payment', $serviceId);
 
                 return;
             }

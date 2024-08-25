@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Provider;
+namespace spec\VK\SyliusStripePaymentPlugin\Provider;
 
-use FluxSE\SyliusPayumStripePlugin\Provider\PaymentMethodTypesProvider;
-use FluxSE\SyliusPayumStripePlugin\Provider\PaymentMethodTypesProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProvider;
+use VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProviderInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderInterface;
 

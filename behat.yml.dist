@@ -53,7 +53,7 @@ default:
         FriendsOfBehat\SymfonyExtension:
             bootstrap: tests/Application/config/bootstrap.php
             kernel:
-                class: Tests\FluxSE\SyliusPayumStripePlugin\Application\Kernel
+                class: Tests\VK\SyliusStripePaymentPlugin\Application\Kernel
 
         FriendsOfBehat\VariadicExtension: ~
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\CommandHandler;
+namespace VK\SyliusStripePaymentPlugin\CommandHandler;
 
-use FluxSE\SyliusPayumStripePlugin\Command\CancelPayment;
-use FluxSE\SyliusPayumStripePlugin\Factory\CancelRequestFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Command\CancelPayment;
+use VK\SyliusStripePaymentPlugin\Factory\CancelRequestFactoryInterface;
 use Payum\Core\Payum;
 use Sylius\Component\Core\Repository\PaymentRepositoryInterface;
 

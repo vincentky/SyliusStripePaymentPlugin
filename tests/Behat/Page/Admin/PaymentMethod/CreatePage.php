@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Page\Admin\PaymentMethod;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Page\Admin\PaymentMethod;
 
 use Behat\Mink\Exception\ElementNotFoundException;
 use Sylius\Behat\Page\Admin\PaymentMethod\CreatePage as BaseCreatePage;

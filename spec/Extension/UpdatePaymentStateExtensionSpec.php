@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Extension;
+namespace spec\VK\SyliusStripePaymentPlugin\Extension;
 
 use Exception;
 use Payum\Core\Extension\Context;

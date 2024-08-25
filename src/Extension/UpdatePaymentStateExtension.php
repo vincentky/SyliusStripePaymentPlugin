@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Extension;
+namespace VK\SyliusStripePaymentPlugin\Extension;
 
 use Payum\Core\Extension\Context;
 use Payum\Core\Extension\ExtensionInterface;

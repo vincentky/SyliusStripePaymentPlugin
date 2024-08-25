@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Provider;
+namespace spec\VK\SyliusStripePaymentPlugin\Provider;
 
-use FluxSE\SyliusPayumStripePlugin\Provider\CustomerEmailProviderInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\DetailsProvider;
-use FluxSE\SyliusPayumStripePlugin\Provider\DetailsProviderInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\LineItemsProviderInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\ModeProviderInterface;
-use FluxSE\SyliusPayumStripePlugin\Provider\PaymentMethodTypesProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\DetailsProvider;
+use VK\SyliusStripePaymentPlugin\Provider\DetailsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\LineItemsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\ModeProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProviderInterface;
 use PhpSpec\ObjectBehavior;
 use Stripe\Checkout\Session;
 use Sylius\Component\Core\Model\OrderInterface;

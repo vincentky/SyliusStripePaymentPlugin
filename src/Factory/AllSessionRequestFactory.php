@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Factory;
+namespace VK\SyliusStripePaymentPlugin\Factory;
 
-use FluxSE\PayumStripe\Request\Api\Resource\AllInterface;
-use FluxSE\PayumStripe\Request\Api\Resource\AllSession;
+use VK\PayumStripe\Request\Api\Resource\AllInterface;
+use VK\PayumStripe\Request\Api\Resource\AllSession;
 
 final class AllSessionRequestFactory implements AllSessionRequestFactoryInterface
 {

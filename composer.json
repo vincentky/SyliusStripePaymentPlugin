@@ -1,18 +1,18 @@
 {
-    "name": "flux-se/sylius-payum-stripe-plugin",
+    "name": "vincentky/sylius-stripe-payment-plugin",
     "type": "sylius-plugin",
     "keywords": ["sylius", "sylius-plugin", "stripe", "payum", "gateway", "sca", "checkout", "session"],
-    "description": "Payum Stripe gateways plugin for Sylius.",
+    "description": "Stripe gateways plugin for Sylius.",
     "license": "MIT",
+    "version": "0.0.1",
     "authors": [
         {
-            "name": "Francis HILAIRE",
-            "email": "Prometee@users.noreply.github.com"
+            "name": "Vincent Kolly",
+            "email": "vincentk0125@gmail.com"
         }
     ],
     "require": {
-        "flux-se/payum-stripe-bundle": "^2.0",
-        "sylius/sylius": "^1.9"
+        "sylius/sylius": "^1.13"
     },
     "require-dev": {
         "ext-json": "*",
@@ -48,13 +48,13 @@
         "symfony/webpack-encore-bundle": "^1|^2"
     },
     "autoload": {
-        "psr-4": { "FluxSE\\SyliusPayumStripePlugin\\": "src/" }
+        "psr-4": { "VK\\SyliusStripePaymentPlugin\\": "src/" }
     },
     "autoload-dev": {
         "psr-4": {
-            "spec\\FluxSE\\SyliusPayumStripePlugin\\": "spec/",
-            "Tests\\FluxSE\\SyliusPayumStripePlugin\\": "tests/",
-            "Tests\\FluxSE\\SyliusPayumStripePlugin\\App\\": "tests/Application/src/"
+            "spec\\VK\\SyliusStripePaymentPlugin\\": "spec/",
+            "Tests\\VK\\SyliusStripePaymentPlugin\\": "tests/",
+            "Tests\\VK\\SyliusStripePaymentPlugin\\App\\": "tests/Application/src/"
         }
     },
     "scripts": {
@@ -75,15 +75,6 @@
             "symfony/flex": false,
             "symfony/thanks": true,
             "symfony/runtime": true
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        },
-        "runtime": {
-            "project_dir": "tests/Application",
-            "dotenv_path": "tests/Application/.env"
         }
     }
 }

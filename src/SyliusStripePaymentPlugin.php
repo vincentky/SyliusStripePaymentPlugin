@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin;
+namespace VK\SyliusStripePaymentPlugin;
 
-use FluxSE\SyliusPayumStripePlugin\DependencyInjection\Compiler\PayumGatewayConfigOverride;
-use FluxSE\SyliusPayumStripePlugin\DependencyInjection\Compiler\PayumStoragePaymentAliaser;
-use FluxSE\SyliusPayumStripePlugin\DependencyInjection\Compiler\WinzouStateMachineCallbacksModifier;
+use VK\SyliusStripePaymentPlugin\DependencyInjection\Compiler\PayumGatewayConfigOverride;
+use VK\SyliusStripePaymentPlugin\DependencyInjection\Compiler\PayumStoragePaymentAliaser;
+use VK\SyliusStripePaymentPlugin\DependencyInjection\Compiler\WinzouStateMachineCallbacksModifier;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class FluxSESyliusPayumStripePlugin extends Bundle
+class SyliusStripePaymentPlugin extends Bundle
 {
     use SyliusPluginTrait;
 

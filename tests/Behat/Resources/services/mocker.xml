@@ -3,33 +3,33 @@
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
-        <service id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.stripe_checkout_session_mocker"
-                 class="Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\StripeCheckoutSessionMocker">
+        <service id="tests.sylius_stripe_payment_plugin.behat.mocker.stripe_checkout_session_mocker"
+                 class="Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\StripeCheckoutSessionMocker">
             <argument type="service" id="sylius.behat.mocker"/>
-            <argument type="service" id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.checkout_session_mocker"/>
-            <argument type="service" id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.payment_intent_mocker"/>
-            <argument type="service" id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.refund_mocker"/>
+            <argument type="service" id="tests.sylius_stripe_payment_plugin.behat.mocker.api.checkout_session_mocker"/>
+            <argument type="service" id="tests.sylius_stripe_payment_plugin.behat.mocker.api.payment_intent_mocker"/>
+            <argument type="service" id="tests.sylius_stripe_payment_plugin.behat.mocker.api.refund_mocker"/>
         </service>
 
-        <service id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.stripe_js_mocker"
-                 class="Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\StripeJsMocker">
+        <service id="tests.sylius_stripe_payment_plugin.behat.mocker.stripe_js_mocker"
+                 class="Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\StripeJsMocker">
             <argument type="service" id="sylius.behat.mocker"/>
-            <argument type="service" id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.payment_intent_mocker"/>
-            <argument type="service" id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.refund_mocker"/>
+            <argument type="service" id="tests.sylius_stripe_payment_plugin.behat.mocker.api.payment_intent_mocker"/>
+            <argument type="service" id="tests.sylius_stripe_payment_plugin.behat.mocker.api.refund_mocker"/>
         </service>
 
-        <service id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.checkout_session_mocker"
-                 class="Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\Api\CheckoutSessionMocker">
-            <argument type="service" id="sylius.behat.mocker"/>
-        </service>
-
-        <service id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.payment_intent_mocker"
-                 class="Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\Api\PaymentIntentMocker">
+        <service id="tests.sylius_stripe_payment_plugin.behat.mocker.api.checkout_session_mocker"
+                 class="Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\Api\CheckoutSessionMocker">
             <argument type="service" id="sylius.behat.mocker"/>
         </service>
 
-        <service id="tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.api.refund_mocker"
-                 class="Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\Api\RefundMocker">
+        <service id="tests.sylius_stripe_payment_plugin.behat.mocker.api.payment_intent_mocker"
+                 class="Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\Api\PaymentIntentMocker">
+            <argument type="service" id="sylius.behat.mocker"/>
+        </service>
+
+        <service id="tests.sylius_stripe_payment_plugin.behat.mocker.api.refund_mocker"
+                 class="Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\Api\RefundMocker">
             <argument type="service" id="sylius.behat.mocker"/>
         </service>
 

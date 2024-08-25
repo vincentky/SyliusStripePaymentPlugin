@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Page\External;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Page\External;
 
 use FriendsOfBehat\PageObjectExtension\Page\PageInterface;
 

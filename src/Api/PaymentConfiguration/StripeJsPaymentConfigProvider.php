@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Api\PaymentConfiguration;
+namespace VK\SyliusStripePaymentPlugin\Api\PaymentConfiguration;
 
-use FluxSE\SyliusPayumStripePlugin\Api\Payum\ProcessorInterface;
+use VK\SyliusStripePaymentPlugin\Api\Payum\ProcessorInterface;
 use Stripe\PaymentIntent;
 use Sylius\Bundle\ApiBundle\Payment\PaymentConfigurationProviderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;

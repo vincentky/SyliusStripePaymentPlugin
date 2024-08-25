@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\StateMachine;
+namespace spec\VK\SyliusStripePaymentPlugin\StateMachine;
 
-use FluxSE\SyliusPayumStripePlugin\Command\CaptureAuthorizedPayment;
+use VK\SyliusStripePaymentPlugin\Command\CaptureAuthorizedPayment;
 use PhpSpec\ObjectBehavior;
 use SM\Event\TransitionEvent;
 use Sylius\Component\Core\Model\PaymentInterface;

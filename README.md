@@ -10,9 +10,9 @@ and authorized payment by [placing a hold on a card](https://stripe.com/docs/pay
 
 Refund is also possible but disabled by default to avoid mistakes, use this config to enable it :
 ```yaml
-# config/packages/flux_se_sylius_payum_stripe.yaml
+# config/packages/sylius_payum_stripe.yaml
 
-flux_se_sylius_payum_stripe:
+sylius_payum_stripe:
   refund_disabled: false
 ```
 
@@ -24,7 +24,7 @@ Install using Composer :
 
 ```shell
 composer remove --dev stripe/stripe-php
-composer require flux-se/sylius-payum-stripe-plugin
+composer require vincentky/sylius-stripe-payment-plugin
 ```
 
 > 💡 If the flex recipe has not been applied then follow the next step.
@@ -38,17 +38,17 @@ Enable this plugin :
 
 return [
     // ...
-    FluxSE\SyliusPayumStripePlugin\FluxSESyliusPayumStripePlugin::class => ['all' => true],    
-    FluxSE\PayumStripeBundle\FluxSEPayumStripeBundle::class => ['all' => true],
+    VK\SyliusStripePaymentPlugin\VKSyliusStripePaymentPlugin::class => ['all' => true],    
+    VK\PayumStripeBundle\VKPayumStripeBundle::class => ['all' => true],
     // ...
 ];
 ```
 
-Create the file `config/packages/flux_se_sylius_payum_stripe.yaml` and add the following content
+Create the file `config/packages/sylius_payum_stripe.yaml` and add the following content
 
 ```yaml
 imports:
-  - { resource: "@FluxSESyliusPayumStripePlugin/Resources/config/config.yaml" }
+  - { resource: "@VKSyliusStripePaymentPlugin/Resources/config/config.yaml" }
 ```
 
 ## Configuration
@@ -201,7 +201,7 @@ will make a Payum `Capture` or an `Authorize` and respond with the Stripe Checko
 ```
 
 Since this endpoint is not able to get any data from you, a service can be decorated to specify the Stripe Checkout Session `success_url` you need. 
-Decorate this service : `flux_se.sylius_payum_stripe.api.payum.after_url.stripe_checkout_session` to generate your own dedicated url.
+Decorate this service : `sylius_payum_stripe.api.payum.after_url.stripe_checkout_session` to generate your own dedicated url.
 You will have access to the Sylius `Payment` to decide what is the url/route and the parameters of it.
 
 [docs-assets-create-payment-method]: docs/assets/create-payment-method.png
@@ -210,8 +210,8 @@ You will have access to the Sylius `Payment` to decide what is the url/route and
 
 [ico-version]: https://img.shields.io/packagist/v/Flux-SE/sylius-payum-stripe-plugin.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-github-actions]: https://github.com/FLUX-SE/SyliusPayumStripePlugin/workflows/Build/badge.svg
+[ico-github-actions]: https://github.com/FLUX-SE/SyliusStripePaymentPlugin/workflows/Build/badge.svg
 
-[link-packagist]: https://packagist.org/packages/flux-se/sylius-payum-stripe-plugin
-[link-scrutinizer]: https://scrutinizer-ci.com/g/FLUX-SE/SyliusPayumStripePlugin/code-structure
-[link-github-actions]: https://github.com/FLUX-SE/SyliusPayumStripePlugin/actions?query=workflow%3A"Build"
+[link-packagist]: https://packagist.org/packages/vincentky/sylius-stripe-payment-plugin
+[link-scrutinizer]: https://scrutinizer-ci.com/g/FLUX-SE/SyliusStripePaymentPlugin/code-structure
+[link-github-actions]: https://github.com/FLUX-SE/SyliusStripePaymentPlugin/actions?query=workflow%3A"Build"

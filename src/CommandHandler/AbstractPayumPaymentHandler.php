@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\CommandHandler;
+namespace VK\SyliusStripePaymentPlugin\CommandHandler;
 
-use FluxSE\SyliusPayumStripePlugin\Command\PaymentIdAwareCommandInterface;
+use VK\SyliusStripePaymentPlugin\Command\PaymentIdAwareCommandInterface;
 use Payum\Core\Payum;
 use Payum\Core\Security\TokenFactoryInterface;
 use Payum\Core\Security\TokenInterface;

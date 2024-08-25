@@ -28,7 +28,7 @@ default:
         - sylius.behat.context.setup.taxation
         - sylius.behat.context.setup.user
 
-        - tests.flux_se.sylius_payum_stripe_plugin.behat.context.setup.stripe
+        - tests.sylius_stripe_payment_plugin.behat.context.setup.stripe
 
         - sylius.behat.context.ui.paypal
         - sylius.behat.context.ui.shop.cart
@@ -40,7 +40,7 @@ default:
         - sylius.behat.context.ui.shop.checkout.shipping
         - sylius.behat.context.ui.shop.checkout.thank_you
 
-        - tests.flux_se.sylius_payum_stripe_plugin.behat.context.ui.shop.stripe_checkout_session
+        - tests.sylius_stripe_payment_plugin.behat.context.ui.shop.stripe_checkout_session
       filters:
         tags: "@paying_with_stripe_checkout_session_during_checkout&&@ui"
     stripe_checkout_session_payment_configuration:
@@ -72,11 +72,11 @@ default:
         - sylius.behat.context.setup.user
         - sylius.behat.context.setup.cart
 
-        - tests.flux_se.sylius_payum_stripe_plugin.behat.context.setup.stripe
+        - tests.sylius_stripe_payment_plugin.behat.context.setup.stripe
 
         - sylius.behat.context.api.shop.cart
         - sylius.behat.context.api.shop.checkout
 
-        - tests.flux_se.sylius_payum_stripe_plugin.behat.context.api.shop.cart
+        - tests.sylius_stripe_payment_plugin.behat.context.api.shop.cart
       filters:
         tags: "@stripe_checkout_session_payment_configuration&&@api"

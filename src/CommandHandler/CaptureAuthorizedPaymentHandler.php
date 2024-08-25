@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\CommandHandler;
+namespace VK\SyliusStripePaymentPlugin\CommandHandler;
 
-use FluxSE\SyliusPayumStripePlugin\Command\CaptureAuthorizedPayment;
-use FluxSE\SyliusPayumStripePlugin\Factory\ModelAggregateFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Command\CaptureAuthorizedPayment;
+use VK\SyliusStripePaymentPlugin\Factory\ModelAggregateFactoryInterface;
 use Payum\Core\Payum;
 use Payum\Core\Reply\ReplyInterface;
 use Sylius\Component\Core\Repository\PaymentRepositoryInterface;

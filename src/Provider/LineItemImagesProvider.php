@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Provider;
+namespace VK\SyliusStripePaymentPlugin\Provider;
 
 use Exception;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Action\StripeJs;
+namespace VK\SyliusStripePaymentPlugin\Action\StripeJs;
 
-use FluxSE\SyliusPayumStripePlugin\Provider\StripeJs\DetailsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\StripeJs\DetailsProviderInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\Convert;
 use Sylius\Component\Core\Model\PaymentInterface;

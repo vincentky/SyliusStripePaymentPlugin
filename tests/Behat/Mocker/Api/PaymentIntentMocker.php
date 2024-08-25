@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\Api;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\Api;
 
 use ArrayObject;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractCreateAction;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractRetrieveAction;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractUpdateAction;
-use FluxSE\PayumStripe\Request\Api\Resource\CancelPaymentIntent;
-use FluxSE\PayumStripe\Request\Api\Resource\CapturePaymentIntent;
-use FluxSE\PayumStripe\Request\Api\Resource\CreatePaymentIntent;
-use FluxSE\PayumStripe\Request\Api\Resource\RetrievePaymentIntent;
-use FluxSE\PayumStripe\Request\Api\Resource\UpdatePaymentIntent;
+use VK\PayumStripe\Action\Api\Resource\AbstractCreateAction;
+use VK\PayumStripe\Action\Api\Resource\AbstractRetrieveAction;
+use VK\PayumStripe\Action\Api\Resource\AbstractUpdateAction;
+use VK\PayumStripe\Request\Api\Resource\CancelPaymentIntent;
+use VK\PayumStripe\Request\Api\Resource\CapturePaymentIntent;
+use VK\PayumStripe\Request\Api\Resource\CreatePaymentIntent;
+use VK\PayumStripe\Request\Api\Resource\RetrievePaymentIntent;
+use VK\PayumStripe\Request\Api\Resource\UpdatePaymentIntent;
 use Stripe\PaymentIntent;
 use Sylius\Behat\Service\Mocker\MockerInterface;
 
@@ -28,7 +28,7 @@ final class PaymentIntentMocker
     public function mockCreateAction(): void
     {
         $mockCreatePaymentIntent = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.create_payment_intent',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.create_payment_intent',
             AbstractCreateAction::class
         );
 
@@ -63,7 +63,7 @@ final class PaymentIntentMocker
     public function mockRetrieveAction(string $status): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.retrieve_payment_intent',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.retrieve_payment_intent',
             AbstractRetrieveAction::class
         );
 
@@ -96,7 +96,7 @@ final class PaymentIntentMocker
     public function mockUpdateAction(string $status, string $captureMethod): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.update_payment_intent',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.update_payment_intent',
             AbstractUpdateAction::class
         );
 
@@ -130,7 +130,7 @@ final class PaymentIntentMocker
     public function mockCancelAction(string $captureMethod): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.cancel_payment_intent',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.cancel_payment_intent',
             AbstractRetrieveAction::class
         );
 
@@ -163,7 +163,7 @@ final class PaymentIntentMocker
     public function mockCaptureAction(string $status): void
     {
         $mock = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.capture_payment_intent',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.capture_payment_intent',
             AbstractRetrieveAction::class
         );
 

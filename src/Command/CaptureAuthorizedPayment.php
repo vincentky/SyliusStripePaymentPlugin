@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Command;
+namespace VK\SyliusStripePaymentPlugin\Command;
 
 class CaptureAuthorizedPayment implements PaymentIdAwareCommandInterface
 {

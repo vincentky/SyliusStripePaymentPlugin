@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Provider;
+namespace spec\VK\SyliusStripePaymentPlugin\Provider;
 
-use FluxSE\SyliusPayumStripePlugin\Provider\LinetItemNameProvider;
-use FluxSE\SyliusPayumStripePlugin\Provider\LinetItemNameProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\LinetItemNameProvider;
+use VK\SyliusStripePaymentPlugin\Provider\LinetItemNameProviderInterface;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\ProductInterface;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Extension;
+namespace VK\SyliusStripePaymentPlugin\Extension;
 
-use FluxSE\SyliusPayumStripePlugin\Action\ConvertPaymentActionInterface;
-use FluxSE\SyliusPayumStripePlugin\Factory\AllSessionRequestFactoryInterface;
-use FluxSE\SyliusPayumStripePlugin\Factory\ExpireSessionRequestFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Action\ConvertPaymentActionInterface;
+use VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactoryInterface;
 use Payum\Core\Extension\Context;
 use Payum\Core\Extension\ExtensionInterface;
 use Payum\Core\Request\Convert;
@@ -23,7 +23,7 @@ use Sylius\Component\Core\Model\PaymentInterface;
  *
  * @see https://stripe.com/docs/api/payment_intents/cancel
  * You cannot cancel the PaymentIntent for a Checkout Session. Expire the Checkout Session instead
- * @see https://github.com/FLUX-SE/SyliusPayumStripePlugin/issues/32
+ * @see https://github.com/FLUX-SE/SyliusStripePaymentPlugin/issues/32
  */
 final class CancelExistingPaymentIntentExtension implements ExtensionInterface
 {

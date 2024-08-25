@@ -55,6 +55,6 @@ return [
     Sylius\Bundle\ApiBundle\SyliusApiBundle::class => ['all' => true],
     SyliusLabs\DoctrineMigrationsExtraBundle\SyliusLabsDoctrineMigrationsExtraBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    FluxSE\PayumStripeBundle\FluxSEPayumStripeBundle::class => ['all' => true],
-    FluxSE\SyliusPayumStripePlugin\FluxSESyliusPayumStripePlugin::class => ['all' => true],
+    VK\PayumStripeBundle\VKPayumStripeBundle::class => ['all' => true],
+    VK\SyliusStripePaymentPlugin\VKSyliusStripePaymentPlugin::class => ['all' => true],
 ];

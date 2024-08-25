@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\Api;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\Api;
 
 use ArrayObject;
-use FluxSE\PayumStripe\Action\Api\Resource\AbstractCreateAction;
-use FluxSE\PayumStripe\Request\Api\Resource\CreateRefund;
+use VK\PayumStripe\Action\Api\Resource\AbstractCreateAction;
+use VK\PayumStripe\Request\Api\Resource\CreateRefund;
 use Stripe\Checkout\Session;
 use Stripe\Refund;
 use Sylius\Behat\Service\Mocker\MockerInterface;
@@ -24,7 +24,7 @@ final class RefundMocker
     public function mockCreateAction(): void
     {
         $mockCreateSession = $this->mocker->mockService(
-            'tests.flux_se.sylius_payum_stripe_plugin.behat.mocker.action.create_refund',
+            'tests.sylius_stripe_payment_plugin.behat.mocker.action.create_refund',
             AbstractCreateAction::class
         );
 

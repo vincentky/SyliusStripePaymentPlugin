@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Extension;
+namespace spec\VK\SyliusStripePaymentPlugin\Extension;
 
-use FluxSE\PayumStripe\Request\Api\Resource\AllInterface;
-use FluxSE\PayumStripe\Request\Api\Resource\CustomCallInterface;
-use FluxSE\SyliusPayumStripePlugin\Action\ConvertPaymentActionInterface;
-use FluxSE\SyliusPayumStripePlugin\Factory\AllSessionRequestFactoryInterface;
-use FluxSE\SyliusPayumStripePlugin\Factory\ExpireSessionRequestFactoryInterface;
+use VK\PayumStripe\Request\Api\Resource\AllInterface;
+use VK\PayumStripe\Request\Api\Resource\CustomCallInterface;
+use VK\SyliusStripePaymentPlugin\Action\ConvertPaymentActionInterface;
+use VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactoryInterface;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Extension\Context;
 use Payum\Core\Extension\ExtensionInterface;

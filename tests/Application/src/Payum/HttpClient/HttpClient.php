@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\App\Payum\HttpClient;
+namespace Tests\VK\SyliusStripePaymentPlugin\App\Payum\HttpClient;
 
 use Payum\Core\HttpClientInterface;
 use Psr\Http\Client\ClientInterface;

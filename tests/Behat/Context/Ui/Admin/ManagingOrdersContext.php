@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Context\Ui\Admin;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Context\Ui\Admin;
 
 use Behat\Behat\Context\Context;
 use Doctrine\Persistence\ObjectManager;
@@ -13,7 +13,7 @@ use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Payment\PaymentTransitions;
 use Sylius\Component\Resource\StateMachine\StateMachineInterface;
-use Tests\FluxSE\SyliusPayumStripePlugin\Behat\Mocker\StripeCheckoutSessionMocker;
+use Tests\VK\SyliusStripePaymentPlugin\Behat\Mocker\StripeCheckoutSessionMocker;
 
 class ManagingOrdersContext implements Context
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace spec\FluxSE\SyliusPayumStripePlugin\Provider;
+namespace spec\VK\SyliusStripePaymentPlugin\Provider;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use FluxSE\SyliusPayumStripePlugin\Provider\LineItemImagesProvider;
-use FluxSE\SyliusPayumStripePlugin\Provider\LineItemImagesProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\LineItemImagesProvider;
+use VK\SyliusStripePaymentPlugin\Provider\LineItemImagesProviderInterface;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Core\Model\OrderItemInterface;

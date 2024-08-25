@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Action\StripeJs;
+namespace VK\SyliusStripePaymentPlugin\Action\StripeJs;
 
 use Payum\Core\Action\ActionInterface;
 

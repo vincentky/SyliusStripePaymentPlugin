@@ -1,4 +1,4 @@
-flux_se_sylius_payum_stripe_plugin:
+sylius_stripe_payment_plugin:
     payum_gateway_factory:
         stripe_checkout_session: Stripe Checkout Sessie (met SCA-ondersteuning)
     form:

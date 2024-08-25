@@ -1,19 +1,19 @@
 services:
 
-  flux_se.sylius_payum_stripe.state_machine.refund:
+  sylius_payum_stripe.state_machine.refund:
     public: true
-    class: FluxSE\SyliusPayumStripePlugin\StateMachine\RefundOrderProcessor
+    class: VK\SyliusStripePaymentPlugin\StateMachine\RefundOrderProcessor
     arguments:
       $commandBus: '@sylius.command_bus'
 
-  flux_se.sylius_payum_stripe.state_machine.cancel:
+  sylius_payum_stripe.state_machine.cancel:
     public: true
-    class: FluxSE\SyliusPayumStripePlugin\StateMachine\CancelOrderProcessor
+    class: VK\SyliusStripePaymentPlugin\StateMachine\CancelOrderProcessor
     arguments:
       $commandBus: '@sylius.command_bus'
 
-  flux_se.sylius_payum_stripe.state_machine.capture_authorized:
+  sylius_payum_stripe.state_machine.capture_authorized:
     public: true
-    class: FluxSE\SyliusPayumStripePlugin\StateMachine\CaptureAuthorizedOrderProcessor
+    class: VK\SyliusStripePaymentPlugin\StateMachine\CaptureAuthorizedOrderProcessor
     arguments:
       $commandBus: '@sylius.command_bus'

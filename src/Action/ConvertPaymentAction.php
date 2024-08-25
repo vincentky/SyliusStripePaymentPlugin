@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Action;
+namespace VK\SyliusStripePaymentPlugin\Action;
 
-use FluxSE\SyliusPayumStripePlugin\Provider\DetailsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Provider\DetailsProviderInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\Convert;
 use Sylius\Component\Core\Model\OrderInterface;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FluxSE\SyliusPayumStripePlugin\Behat\Page\External;
+namespace Tests\VK\SyliusStripePaymentPlugin\Behat\Page\External;
 
 use ArrayAccess;
 use Behat\Mink\Exception\DriverException;
@@ -12,7 +12,7 @@ use Payum\Core\Security\TokenInterface;
 use RuntimeException;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpKernel\HttpKernelBrowser;
-use Tests\FluxSE\SyliusPayumStripePlugin\Behat\Page\Shop\PayumNotifyPageInterface;
+use Tests\VK\SyliusStripePaymentPlugin\Behat\Page\Shop\PayumNotifyPageInterface;
 
 final class StripePage extends Page implements StripePageInterface
 {

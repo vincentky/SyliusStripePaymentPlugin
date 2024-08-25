@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\CommandHandler;
+namespace VK\SyliusStripePaymentPlugin\CommandHandler;
 
-use FluxSE\SyliusPayumStripePlugin\Command\RefundPayment;
-use FluxSE\SyliusPayumStripePlugin\Factory\RefundRequestFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Command\RefundPayment;
+use VK\SyliusStripePaymentPlugin\Factory\RefundRequestFactoryInterface;
 use Payum\Core\Payum;
 use Sylius\Component\Core\Repository\PaymentRepositoryInterface;
 
