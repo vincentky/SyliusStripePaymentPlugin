@@ -12,6 +12,7 @@
         }
     ],
     "require": {
+        "vincentky/payum-stripe-bundle" : "^0.0.1",
         "sylius/sylius": "^1.13"
     },
     "require-dev": {
