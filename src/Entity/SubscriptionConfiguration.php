@@ -4,26 +4,42 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity]
+#[ORM\Table(name: "sylius_subscription_configuration")]
 class SubscriptionConfiguration implements SubscriptionConfigurationInterface
 {
+    #[ORM\Id]
+    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
     protected ?int $id = null;
 
+    #[ORM\Column(type: "string", nullable: false)]
     protected string $hostName = '';
 
+    #[ORM\Column(type: "integer", nullable: true)]
     protected ?int $port = null;
 
+    #[ORM\Column(type: "string", nullable: true)]
     protected ?string $subscriptionId = null;
 
+    #[ORM\Column(type: "string", nullable: true)]
     protected ?string $mandateId = null;
 
+    #[ORM\Column(name: "stripe_customer_id", type: "string", nullable: true)]
     protected ?string $customerId = null;
 
-    protected ?string $interval = null;
-
+    #[ORM\Column(type: "integer", nullable: false)]
     protected int $numberOfRepetitions = 1;
 
+    #[ORM\Column(type: "json", nullable: false)]
     protected array $paymentDetailsConfiguration = [];
 
+    #[ORM\Column(name: "`interval`", type: "string", nullable: false)]
+    protected ?string $interval = null;
+
+    #[ORM\OneToOne(mappedBy: "subscriptionConfiguration", targetEntity: Subscription::class)]
     protected SubscriptionInterface $subscription;
 
     public function __construct(SubscriptionInterface $subscription)

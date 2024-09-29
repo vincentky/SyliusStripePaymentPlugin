@@ -1,0 +1,8 @@
+sylius_resource:
+    resources:
+        sylius_stripe_payment_plugin.subscription:
+            driver: doctrine/orm
+            classes:
+                model: VK\SyliusStripePaymentPlugin\Entity\Subscription
+                interface: VK\SyliusStripePaymentPlugin\Entity\SubscriptionInterface
+                repository: VK\SyliusStripePaymentPlugin\Repository\SubscriptionRepository

@@ -1,0 +1,24 @@
+{% import '@SyliusUi/Macro/flags.html.twig' as flags %}
+
+<h1 class="ui header">
+    <i class="circular cart icon"></i>
+    <div class="content">
+        {{ 'sylius_stripe_payment_plugin.ui.subscription.block_name'|trans ~' #'~ ('0000000' ~ subscription.id) }}
+        <div class="sub header">
+            <div class="ui horizontal divided list">
+                <div class="item" id="sylius-order-state">
+                    {% include "@SyliusStripePaymentPlugin/Admin/Subscription/_partial/_state.html.twig" with {data: subscription.state} only %}
+                </div>
+                <div class="item">
+                    {{ 'sylius_stripe_payment_plugin.ui.subscription.subscription_duration' | trans({
+                        '%times%': subscription.subscriptionConfiguration.numberOfRepetitions,
+                        '%interval%': subscription.subscriptionConfiguration.interval
+                    }) }}
+                </div>
+                <div class="item">
+                    <strong>{{ subscription.orders | length }} / {{ subscription.subscriptionConfiguration.numberOfRepetitions }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</h1>

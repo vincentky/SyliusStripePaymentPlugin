@@ -1,22 +1,9 @@
+imports:
+    - { resource: "@SyliusStripePaymentPlugin/Resources/config/resources.yaml" }
+    - { resource: "@SyliusStripePaymentPlugin/Resources/config/state_machine.yaml" }
+    - { resource: "@SyliusStripePaymentPlugin/Resources/config/grids.yaml" }
+    - { resource: "@SyliusStripePaymentPlugin/Resources/config/ui.yaml" }
+
 twig:
   form_themes:
     - '@SyliusStripePaymentPlugin/Admin/PaymentMethod/Form/useAuthorize.html.twig'
-
-winzou_state_machine:
-  sylius_payment:
-    callbacks:
-      after:
-        sylius_payum_stripe_refund:
-          # By default, this callback is disabled to avoid mistake
-          # you can enable it using this plugin config : `refund_disabled: false`
-          on: ["refund"]
-          do: ["@sylius_payum_stripe.state_machine.refund", "__invoke"]
-          args: ["object", "event"]
-        sylius_payum_stripe_cancel:
-          on: ["cancel"]
-          do: ["@sylius_payum_stripe.state_machine.cancel", "__invoke"]
-          args: ["object", "event"]
-        sylius_payum_stripe_complete_authorized:
-          on: ["complete"]
-          do: ["@sylius_payum_stripe.state_machine.capture_authorized", "__invoke"]
-          args: ["object", "event"]

@@ -1,0 +1,80 @@
+sylius_grid:
+    grids:
+        sylius_stripe_payment_plugin_subscription:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius_stripe_payment_plugin.model.subscription.class%"
+            actions:
+                item:
+                    show:
+                        type: show
+                        options:
+                            link:
+                                route: sylius_stripe_payment_plugin_subscription_show
+                                parameters:
+                                    id: resource.id
+            sorting:
+                id: asc
+            fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                    sortable: id
+                state:
+                    type: twig
+                    label: sylius_stripe_payment_plugin.ui.subscription.fields.state
+                    sortable: state
+                    options:
+                        template: "@SyliusStripePaymentPlugin/Admin/Subscription/Grid/Field/state.html.twig"
+                paymentState:
+                    type: twig
+                    label: sylius_stripe_payment_plugin.ui.subscription.fields.payment_state
+                    sortable: paymentState
+                    options:
+                        template: "@SyliusStripePaymentPlugin/Admin/Subscription/Grid/Field/payment_state.html.twig"
+                orders:
+                    type: twig
+                    label: sylius_stripe_payment_plugin.ui.subscription.fields.orders
+                    path: .
+                    options:
+                        template: "@SyliusStripePaymentPlugin/Admin/Subscription/Grid/Field/orders.html.twig"
+
+                createdAt:
+                    type: datetime
+                    label: sylius.ui.created_at
+                    sortable: createdAt
+                    options:
+                        format: 'Y-m-d H:i:s'
+                startedAt:
+                    type: datetime
+                    label: sylius_stripe_payment_plugin.ui.subscription.fields.started_at
+                    sortable: startedAt
+                    options:
+                        format: 'Y-m-d H:i:s'
+                recentFailedPaymentsCount:
+                    type: string
+                    sortable: recentFailedPaymentsCount
+                    label: sylius_stripe_payment_plugin.ui.subscription.fields.recent_failed_payments_count
+            filters:
+                createdAt:
+                    type: date
+                    label: sylius_stripe_payment_plugin.ui.subscription.grid.filters.created_at
+                    options:
+                        field: createdAt
+                        label: test
+                startedAt:
+                    type: date
+                    label: sylius_stripe_payment_plugin.ui.subscription.grid.filters.started_at
+                    options:
+                        field: startedAt
+                        label: test
+                state:
+                    type: subscription_state
+                    label: sylius_stripe_payment_plugin.ui.subscription.grid.filters.state
+                    options:
+                        field: state
+                        label: test
+    templates:
+        filter:
+            subscription_state: "@SyliusStripePaymentPlugin/Admin/Logger/Grid/_theme.html.twig"

@@ -1,0 +1,10 @@
+{% import '@SyliusAdmin/Macro/breadcrumb.html.twig' as breadcrumb %}
+
+{% set breadcrumbs = [
+        { label: 'sylius.ui.administration'|trans, url: path('sylius_admin_dashboard') },
+        { label: 'sylius_stripe_payment_plugin.ui.breadcrumbs.subscriptions'|trans, url: path('sylius_stripe_payment_plugin_admin_subscription_index') },
+        { label: '#'~subscription.id }
+    ]
+%}
+
+{{ breadcrumb.crumble(breadcrumbs) }}

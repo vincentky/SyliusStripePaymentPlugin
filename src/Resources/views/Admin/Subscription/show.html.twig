@@ -1,0 +1,9 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% block title %}{{ 'sylius_stripe_payment_plugin.ui.subscription.block_name'|trans ~' #'~ subscription.id }} {{ parent() }}{% endblock %}
+
+{% set customer = subscription.customer %}
+
+{% block content %}
+    {{ sylius_template_event('sylius_stripe_payment_plugin_admin.subscription.show.content', _context) }}
+{% endblock %}

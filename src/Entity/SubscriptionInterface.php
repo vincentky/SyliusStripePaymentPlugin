@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace VK\SyliusStripePaymentPlugin\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Core\Model\OrderInterface as SyliusOrder;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
@@ -52,11 +51,6 @@ interface SubscriptionInterface extends ResourceInterface
 
     public function addPayment(PaymentInterface $payment): void;
 
-    /** @return Collection<int, SyliusOrder> */
-    public function getOrders(): Collection;
-
-    public function addOrder(SyliusOrder $order): void;
-
     public function getCustomer(): ?CustomerInterface;
 
     public function setCustomer(CustomerInterface $user): void;
@@ -89,5 +83,5 @@ interface SubscriptionInterface extends ResourceInterface
 
     public function getSubscriptionConfiguration(): SubscriptionConfigurationInterface;
 
-    public function getLastOrder(): ?SyliusOrder;
+    public function getLastOrder(): ?OrderInterface;
 }

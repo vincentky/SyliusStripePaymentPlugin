@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@SyliusStripePaymentPlugin/Resources/config/resources/subscription.yaml" }

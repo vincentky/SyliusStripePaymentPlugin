@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        public: true
+        
+    VK\SyliusStripePaymentPlugin\Menu\RecurringMenuListener:
+        class: VK\SyliusStripePaymentPlugin\Menu\RecurringMenuListener
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: buildMenu }

@@ -3,6 +3,48 @@ sylius_stripe_payment_plugin:
         product_variant:
             tab:
                 recurring: 'Recurring settings'
+        subscriptions: 'Subscriptions'
+        recurring_payments: 'Recurring payments'
+        subscription_list: ''
+        subscription:
+            block_name: 'Subscription'
+            contents: 'Subscription contents'
+            orders: 'Orders'
+            payments: 'Payments'
+            subscription_duration: 'Will occur %times% times, with interval %interval%.'
+            schedule:
+                block_name: 'Payment schedule'
+                index: '#'
+                scheduled_date: 'Scheduled date'
+                fulfilled_date: 'Fulfilled date'
+            transitions:
+                block_name: 'Subscription state management'
+                cancel: 'Cancel'
+                pause: 'Pause'
+                resume: 'Resume'
+            fields:
+                state: 'State'
+                started_at: 'Started at'
+                interval: 'Interval'
+                orders: 'Orders'
+                recent_failed_payments_count: 'Recent failed payments count'
+                payment_state: 'Recent payment state'
+            state:
+                new: 'New'
+                active: 'Active'
+                processing: 'Processing'
+                canceled: 'Canceled'
+                aborted: 'Auto-Canceled due to failed payments'
+                completed: 'Completed'
+                paused: 'Paused'
+            payment_state:
+                pending: 'Pending'
+                fail: 'Failed'
+                ok: 'Ok'
+            grid:
+                filters:
+                    created_at: 'Created at'
+                    started_at: 'Started at'        
     payum_gateway_factory:
         stripe_checkout_session: Stripe Checkout Session (with SCA support)
         stripe_js: Stripe JS (with SCA support)

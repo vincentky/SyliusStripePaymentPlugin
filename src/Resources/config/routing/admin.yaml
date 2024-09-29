@@ -1,0 +1,2 @@
+sylius_stripe_payment_plugin_subscription:
+  resource: "admin/subscription.yaml"
