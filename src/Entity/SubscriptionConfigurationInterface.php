@@ -7,9 +7,9 @@ namespace VK\SyliusStripePaymentPlugin\Entity;
 interface SubscriptionConfigurationInterface
 {
     public const SUPPORTED_INTERVAL_STEPS = [
-        'days',
-        'weeks',
-        'months',
+        'day',
+        'week',
+        'month',
     ];
 
     public function getId(): ?int;

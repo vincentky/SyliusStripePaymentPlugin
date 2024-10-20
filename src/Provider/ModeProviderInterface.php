@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Provider;
 
-use Sylius\Component\Core\Model\OrderInterface;
+use VK\SyliusStripePaymentPlugin\Entity\OrderInterface;
 
 interface ModeProviderInterface
 {

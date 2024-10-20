@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        public: true
+        autowire: true
+    
+    VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface: '@VK\SyliusStripePaymentPlugin\Service\StripeService'
+
+    VK\SyliusStripePaymentPlugin\Service\StripeService:
+        class: VK\SyliusStripePaymentPlugin\Service\StripeService
+        arguments:
+            $secretKey: '%env(STRIPE_SECRET_KEY)%'    

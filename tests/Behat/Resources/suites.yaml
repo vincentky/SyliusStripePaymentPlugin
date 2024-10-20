@@ -1,4 +1,0 @@
-imports:
-    - 'suites/admin.yaml'
-    - 'suites/stripe_checkout_session/shop.yaml'
-    - 'suites/stripe_js/shop.yaml'

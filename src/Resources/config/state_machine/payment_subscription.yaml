@@ -1,41 +1,4 @@
 winzou_state_machine:
-    sylius_payment:
-        callbacks:
-            after:
-                sylius_process_subscription_fail:
-                    on: [ "fail" ]
-                    do: [ "@sylius_stripe_payment_plugin.payment_processing.subscription_payment_processor", "processFailed" ]
-                    args: [ "object" ]
-
-                sylius_process_subscription_success:
-                    on: [ "complete" ]
-                    do: [ "@sylius_stripe_payment_plugin.payment_processing.subscription_payment_processor", "processSuccess" ]
-                    args: [ "object" ]
-
-    subscription_manual:
-        class: "%sylius_stripe_payment_plugin.model.subscription.class%"
-        property_path: state
-        graph: subscription_payment_graph_manual
-        state_machine_class: "%sylius.state_machine.class%"
-        states:
-            new: ~
-            active: ~
-            processing: ~
-            paused: ~
-            canceled: ~
-            completed: ~
-
-        transitions:
-            pause:
-                from: [ active ]
-                to: paused
-            resume:
-                from: [ paused ]
-                to: active
-            cancel:
-                from: [ active, processing ]
-                to: canceled
-
     subscription_payment_state_graph:
         class: "%sylius_stripe_payment_plugin.model.subscription.class%"
         property_path: paymentState

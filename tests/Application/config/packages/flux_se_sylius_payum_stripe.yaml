@@ -1,5 +1,0 @@
-imports:
-  - { resource: "@VKSyliusStripePaymentPlugin/Resources/config/config.yaml" }
-
-sylius_payum_stripe:
-  refund_disabled: false

@@ -17,6 +17,13 @@ trait RecurringProductVariantTrait
     #[ORM\Column(name: "recurring_interval", type: "string", nullable: true)]
     private ?string $interval = null;
 
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $stripePriceId = null;
+
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $stripeProductId = null;
+
+
     public function isRecurring(): bool
     {
         return $this->recurring;
@@ -45,6 +52,26 @@ trait RecurringProductVariantTrait
     public function setInterval(?string $interval): void
     {
         $this->interval = $interval;
+    }
+
+    public function getStripePriceId(): ?string
+    {
+        return $this->stripePriceId;
+    }
+
+    public function setStripePriceId(?string $stripePriceId): void
+    {
+        $this->stripePriceId = $stripePriceId;
+    }
+
+    public function getStripeProductId(): ?string
+    {
+        return $this->stripeProductId;
+    }
+
+    public function setStripeProductId(string $stripeProductId): void
+    {
+        $this->stripeProductId = $stripeProductId;
     }
 }
 

@@ -1,0 +1,7 @@
+services:
+    _defaults:
+        autowire: true
+        
+    VK\SyliusStripePaymentPlugin\EventSubscriber\DoctrineSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }

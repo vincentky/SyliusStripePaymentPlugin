@@ -6,6 +6,7 @@ namespace VK\SyliusStripePaymentPlugin\Provider;
 
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
+use VK\SyliusStripePaymentPlugin\Utility\StripeIntervalUtility;
 
 final class LineItemProvider implements LineItemProviderInterface
 {
@@ -17,8 +18,9 @@ final class LineItemProvider implements LineItemProviderInterface
 
     public function __construct(
         LineItemImagesProviderInterface $lineItemImagesProvider,
-        LinetItemNameProviderInterface $lineItemNameProvider
-    ) {
+        LinetItemNameProviderInterface  $lineItemNameProvider
+    )
+    {
         $this->lineItemImagesProvider = $lineItemImagesProvider;
         $this->lineItemNameProvider = $lineItemNameProvider;
     }
@@ -40,6 +42,13 @@ final class LineItemProvider implements LineItemProviderInterface
                 'images' => $this->lineItemImagesProvider->getImageUrls($orderItem),
             ],
         ];
+
+        if ($orderItem->getVariant()?->isRecurring()) {
+            $interval = StripeIntervalUtility::retrieveStepAndAmountFromInterval($orderItem->getVariant()->getInterval());
+            $priceData['recurring'] = [
+                'interval' => $interval['step'],
+            ];
+        }
 
         return [
             'price_data' => $priceData,

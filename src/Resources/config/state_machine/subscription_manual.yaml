@@ -20,5 +20,5 @@ winzou_state_machine:
                 from: [ paused ]
                 to: active
             cancel:
-                from: [ new, active, processing ]
+                from: [ active, processing ]
                 to: canceled

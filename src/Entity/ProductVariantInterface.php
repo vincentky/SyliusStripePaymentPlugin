@@ -19,4 +19,12 @@ interface ProductVariantInterface extends BaseProductVariantInterface
     public function getInterval(): ?string;
 
     public function setInterval(string $interval): void;
+
+    public function getStripePriceId(): ?string;
+
+    public function setStripePriceId(string $stripePriceId): void;
+
+    public function getStripeProductId(): ?string;
+
+    public function setStripeProductId(string $stripeProductId): void;
 }

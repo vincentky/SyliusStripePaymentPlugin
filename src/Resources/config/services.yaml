@@ -2,7 +2,9 @@ imports:
     - { resource: 'services/command_handlers.yaml' }
     - { resource: 'services/factory.yaml' }
     - { resource: 'services/payum.yaml' }
+    - { resource: 'services/stripe.yaml' }
     - { resource: 'services/event_listener.yaml' }
+    - { resource: 'services/event_subscriber.yaml' }
     - { resource: 'services/state_machine.yaml' }
     - { resource: 'services/form.yaml' }
     - { resource: 'services/menu.yaml' }

@@ -59,9 +59,9 @@ sylius_stripe_payment_plugin:
                 step: 'Interval step unit'
                 amount: 'Interval step'
                 steps:
-                    days: 'Day(s)'
-                    weeks: 'Week(s)'
-                    months: 'Month(s)'
+                    day: 'Day(s)'
+                    week: 'Week(s)'
+                    month: 'Month(s)'
         gateway_configuration:
             stripe:
                 publishable_key: Publishable key

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace VK\SyliusStripePaymentPlugin\Form\Transformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use VK\SyliusStripePaymentPlugin\Entity\SubscriptionConfigurationInterface;
+use VK\SyliusStripePaymentPlugin\Utility\StripeIntervalUtility;
 
 final class StripeIntervalTransformer implements DataTransformerInterface
 {
@@ -18,16 +18,7 @@ final class StripeIntervalTransformer implements DataTransformerInterface
             ];
         }
 
-        preg_match(
-            sprintf(
-                '/^(?<amount>\d{1,})\s(?<step>%s)$/',
-                implode('|', SubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS)
-            ),
-            $value,
-            $matches
-        );
-
-        return $matches;
+        return StripeIntervalUtility::retrieveStepAndAmountFromInterval($value);
     }
 
     public function reverseTransform($value)
