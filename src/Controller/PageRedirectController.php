@@ -1,103 +1,48 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Controller\Action\Shop;
+namespace VK\SyliusStripePaymentPlugin\Controller;
 
-use SyliusMolliePlugin\Entity\OrderInterface;
-use SyliusMolliePlugin\Provider\Apple\ApplePayDirectProviderInterface;
-use Sylius\Bundle\OrderBundle\Controller\OrderController as BaseOrderController;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\Component\Payment\Model\PaymentInterface;
-use Sylius\Component\Resource\Exception\UpdateHandlingException;
-use Sylius\Component\Resource\ResourceActions;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Sylius\Component\Order\Repository\OrderRepositoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\RouterInterface;
 
-final class OrderController extends BaseOrderController
+final class PageRedirectController
 {
-    public function updateAppleOrderAction(Request $request): Response
+    private const ORDER_COMPLETED_STATE = 'completed';
+
+    public function __construct(
+        private RouterInterface          $router,
+        private OrderRepositoryInterface $orderRepository
+    )
     {
-        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
-
-        $this->isGrantedOr403($configuration, ResourceActions::UPDATE);
-        $resource = $this->findOr404($configuration);
-
-        /** @var ResourceControllerEvent $event */
-        $event = $this->eventDispatcher->dispatchPreEvent(ResourceActions::UPDATE, $configuration, $resource);
-
-        if ($event->isStopped() && !$configuration->isHtmlRequest()) {
-            throw new HttpException($event->getErrorCode(), $event->getMessage());
-        }
-
-        if ($event->isStopped()) {
-            $eventResponse = $event->getResponse();
-            if (null !== $eventResponse) {
-                return $eventResponse;
-            }
-
-            return new JsonResponse([], Response::HTTP_BAD_REQUEST);
-        }
-
-        try {
-            /** @var OrderInterface $currentCart */
-            $currentCart = $this->getCurrentCart();
-            $this->getApplePayProviderService()->provideOrder($currentCart, $request);
-
-            /** @var PaymentInterface $payment */
-            $payment = $currentCart->getLastPayment();
-
-            if (PaymentInterface::STATE_COMPLETED !== $payment->getState()) {
-                $response = [
-                    'status' => 1,
-                    'errors' => 'Payment not created',
-                ];
-
-                return new JsonResponse($response, Response::HTTP_BAD_REQUEST);
-            }
-
-            $this->resourceUpdateHandler->handle($resource, $configuration, $this->manager);
-        } catch (UpdateHandlingException $exception) {
-            return new JsonResponse([], Response::HTTP_BAD_REQUEST);
-        }
-
-        $postEvent = $this->eventDispatcher->dispatchPostEvent(ResourceActions::UPDATE, $configuration, $resource);
-
-        $postEventResponse = $postEvent->getResponse();
-
-        if (null !== $postEventResponse) {
-            return $postEventResponse;
-        }
-
-        $initializeEvent = $this->eventDispatcher->dispatchInitializeEvent(ResourceActions::UPDATE, $configuration, $resource);
-
-        $initializeEventResponse = $initializeEvent->getResponse();
-
-        if (null !== $initializeEventResponse) {
-            return $initializeEventResponse;
-        }
-
-        $dataResponse = [];
-        $redirect = $this->redirectToRoute('sylius_shop_order_thank_you');
-        $dataResponse['returnUrl'] = $redirect->getTargetUrl();
-        $dataResponse['responseToApple'] = ['status' => 0];
-
-        $response = [
-            'success' => true,
-            'data' => $dataResponse,
-        ];
-
-        return new JsonResponse($response, Response::HTTP_OK);
     }
 
-    private function getApplePayProviderService(): ApplePayDirectProviderInterface
+    /**
+     * @param Request $request
+     * @param SessionInterface $session
+     *
+     * @return RedirectResponse
+     */
+    public function thankYouAction(Request $request, SessionInterface $session): RedirectResponse
     {
-        /** @var ApplePayDirectProviderInterface $provider */
-        $provider = $this->get('sylius_mollie_plugin.provider.apple.apple_pay_direct_provider');
+        $orderId = $request->get('orderId');
+        $session->set('sylius_order_id', $orderId);
+        $thankYouPageUrl = $this->router->generate('sylius_shop_order_thank_you');
 
-        return $provider;
+        /** @var \Sylius\Component\Core\Model\OrderInterface|null $order */
+        $order = $this->orderRepository->findOneBy(['id' => $orderId]);
+        $payment = $order->getLastPayment();
+        $orderToken = $order->getTokenValue();
+
+        if ($payment && $payment->getState() === self::ORDER_COMPLETED_STATE) {
+            return new RedirectResponse($thankYouPageUrl);
+        }
+        $cartSummaryUrl = $this->router->generate('sylius_shop_order_show', ['tokenValue' => $orderToken]);
+
+        return new RedirectResponse($cartSummaryUrl);
     }
 }

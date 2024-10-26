@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Service;
 
+use VK\SyliusStripePaymentPlugin\Entity\OrderItemInterface;
 use VK\SyliusStripePaymentPlugin\Entity\ProductVariantInterface;
 
 interface StripeServiceInterface
@@ -13,4 +14,6 @@ interface StripeServiceInterface
     public function updateSubscriptionProduct(ProductVariantInterface $productVariant): void;
 
     public function removeSubscriptionProduct(ProductVariantInterface $productVariant): void;
+
+    public function retrievePriceId(OrderItemInterface $orderItem): ?string;
 }

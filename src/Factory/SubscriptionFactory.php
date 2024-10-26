@@ -1,20 +1,16 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Factory;
+namespace VK\SyliusStripePaymentPlugin\Factory;
 
-use SyliusMolliePlugin\Entity\MollieSubscriptionInterface;
-use SyliusMolliePlugin\Entity\OrderInterface;
-use SyliusMolliePlugin\Entity\ProductVariantInterface;
-use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Webmozart\Assert\Assert;
+use VK\SyliusStripePaymentPlugin\Entity\SubscriptionInterface;
+use VK\SyliusStripePaymentPlugin\Entity\OrderInterface;
 
-final class MollieSubscriptionFactory implements MollieSubscriptionFactoryInterface
+final class SubscriptionFactory implements SubscriptionFactoryInterface
 {
     private FactoryInterface $decoratedFactory;
 
@@ -28,15 +24,15 @@ final class MollieSubscriptionFactory implements MollieSubscriptionFactoryInterf
         $this->router = $router;
     }
 
-    public function createNew(): MollieSubscriptionInterface
+    public function createNew(): SubscriptionInterface
     {
-        /** @var MollieSubscriptionInterface $subscriptionTemplate */
+        /** @var SubscriptionInterface $subscriptionTemplate */
         $subscriptionTemplate = $this->decoratedFactory->createNew();
 
         return $subscriptionTemplate;
     }
 
-    public function createFromFirstOrder(OrderInterface $order): MollieSubscriptionInterface
+    public function createFromFirstOrder(OrderInterface $order): SubscriptionInterface
     {
         $subscriptionTemplate = $this->createNew();
 
@@ -57,7 +53,7 @@ final class MollieSubscriptionFactory implements MollieSubscriptionFactoryInterf
         OrderItemInterface $orderItem,
         array $paymentConfiguration = [],
         string $mandateId = null
-    ): MollieSubscriptionInterface {
+    ): SubscriptionInterface {
         $variant = $orderItem->getVariant();
         if (!$variant) {
             throw new \InvalidArgumentException(

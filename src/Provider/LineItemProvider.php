@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Provider;
 
-use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
-use VK\SyliusStripePaymentPlugin\Utility\StripeIntervalUtility;
+use VK\SyliusStripePaymentPlugin\Entity\OrderInterface;
+use VK\SyliusStripePaymentPlugin\Utility\StripeUtility;
 
 final class LineItemProvider implements LineItemProviderInterface
 {
@@ -25,6 +25,7 @@ final class LineItemProvider implements LineItemProviderInterface
         $this->lineItemNameProvider = $lineItemNameProvider;
     }
 
+
     public function getLineItem(OrderItemInterface $orderItem): ?array
     {
         /** @var OrderInterface|null $order */
@@ -32,6 +33,13 @@ final class LineItemProvider implements LineItemProviderInterface
 
         if (null === $order) {
             return null;
+        }
+
+        if (null !== $orderItem->getStripePriceId()) {
+            return [
+                'price' => $orderItem->getStripePriceId(),
+                'quantity' => 1,
+            ];
         }
 
         $priceData = [
@@ -44,7 +52,7 @@ final class LineItemProvider implements LineItemProviderInterface
         ];
 
         if ($orderItem->getVariant()?->isRecurring()) {
-            $interval = StripeIntervalUtility::retrieveStepAndAmountFromInterval($orderItem->getVariant()->getInterval());
+            $interval = StripeUtility::retrieveStepAndAmountFromInterval($orderItem->getVariant()->getInterval());
             $priceData['recurring'] = [
                 'interval' => $interval['step'],
             ];

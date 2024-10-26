@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\CommandHandler;
 
-use VK\SyliusStripePaymentPlugin\Command\PaymentIdAwareCommandInterface;
 use Payum\Core\Payum;
 use Payum\Core\Security\TokenFactoryInterface;
 use Payum\Core\Security\TokenInterface;
@@ -12,29 +11,19 @@ use Sylius\Bundle\PayumBundle\Model\GatewayConfigInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Repository\PaymentRepositoryInterface;
+use VK\SyliusStripePaymentPlugin\Command\PaymentIdAwareCommandInterface;
 
 abstract class AbstractPayumPaymentHandler
 {
-    /** @var PaymentRepositoryInterface */
-    private $paymentRepository;
-
-    /** @var Payum */
-    protected $payum;
-
-    /** @var string[] */
-    protected array $supportedGateways;
-
     /**
      * @param string[] $supportedGateways
      */
     public function __construct(
-        PaymentRepositoryInterface $paymentRepository,
-        Payum $payum,
-        array $supportedGateways
-    ) {
-        $this->paymentRepository = $paymentRepository;
-        $this->payum = $payum;
-        $this->supportedGateways = $supportedGateways;
+        private readonly PaymentRepositoryInterface $paymentRepository,
+        protected readonly Payum                    $payum,
+        protected readonly array                    $supportedGateways
+    )
+    {
     }
 
     protected function retrievePayment(PaymentIdAwareCommandInterface $command): ?PaymentInterface

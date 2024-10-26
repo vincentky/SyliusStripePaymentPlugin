@@ -1,23 +1,22 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Factory;
+namespace VK\SyliusStripePaymentPlugin\Factory;
 
-use SyliusMolliePlugin\Entity\MollieSubscriptionInterface;
-use SyliusMolliePlugin\Entity\OrderInterface;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use VK\SyliusStripePaymentPlugin\Entity\OrderInterface;
+use VK\SyliusStripePaymentPlugin\Entity\SubscriptionInterface;
 
-interface MollieSubscriptionFactoryInterface extends FactoryInterface
+interface SubscriptionFactoryInterface extends FactoryInterface
 {
-    public function createFromFirstOrder(OrderInterface $order): MollieSubscriptionInterface;
+    public function createFromFirstOrder(OrderInterface $order): SubscriptionInterface;
 
     public function createFromFirstOrderWithOrderItemAndPaymentConfiguration(
         OrderInterface $order,
         OrderItemInterface $orderItem,
         array $paymentConfiguration = [],
         string $mandateId = null
-    ): MollieSubscriptionInterface;
+    ): SubscriptionInterface;
 }

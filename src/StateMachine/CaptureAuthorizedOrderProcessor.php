@@ -12,12 +12,8 @@ use Webmozart\Assert\Assert;
 
 final class CaptureAuthorizedOrderProcessor
 {
-    /** @var MessageBusInterface */
-    private $commandBus;
-
-    public function __construct(MessageBusInterface $commandBus)
+    public function __construct(private readonly MessageBusInterface $commandBus)
     {
-        $this->commandBus = $commandBus;
     }
 
     public function __invoke(PaymentInterface $payment, TransitionEvent $event): void

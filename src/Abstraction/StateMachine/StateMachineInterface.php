@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace FluxSE\SyliusPayumStripePlugin\Abstraction\StateMachine;
+namespace VK\SyliusStripePaymentPlugin\Abstraction\StateMachine;
 
 interface StateMachineInterface
 {

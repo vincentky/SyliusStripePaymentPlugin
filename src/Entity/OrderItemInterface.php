@@ -4,24 +4,11 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Entity;
 
-use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Core\Model\OrderInterface as BaseOrderInterface;
-use Sylius\Component\Core\Model\OrderItemInterface;
+use Sylius\Component\Core\Model\OrderItemInterface as BaseOrderItemInterface;
 
-interface OrderInterface extends BaseOrderInterface
+interface OrderItemInterface extends BaseOrderItemInterface
 {
-    public function hasRecurringContents(): bool;
+    public function getStripePriceId(): ?string;
 
-    public function hasNonRecurringContents(): bool;
-
-    public function getSubscription(): ?SubscriptionInterface;
-
-    public function setSubscription(?SubscriptionInterface $subscription): void;
-
-    /** @return Collection|OrderItemInterface[] */
-    public function getRecurringItems(): Collection;
-
-    /** @return Collection|OrderItemInterface[] */
-    public function getNonRecurringItems(): Collection;
-
+    public function setStripePriceId(?string $stripePriceId): void;
 }

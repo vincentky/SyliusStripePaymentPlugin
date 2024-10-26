@@ -8,12 +8,15 @@ use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\Convert;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
-use VK\SyliusStripePaymentPlugin\Provider\DetailsProviderInterface;
-use VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface;
+use Sylius\Component\Order\Repository\OrderRepositoryInterface;
+use VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Repository\SubscriptionRepositoryInterface;
 
-final class ConvertPaymentAction implements ConvertPaymentActionInterface
+final class CreateSubscriptionAction implements CreateSubscriptionActionInterface
 {
-    public function __construct(private readonly DetailsProviderInterface $detailsProvider, private readonly StripeServiceInterface $stripeService)
+    public function __construct(private readonly SubscriptionRepositoryInterface $subscriptionRepository,
+                                private readonly SubscriptionFactoryInterface $subscriptionFactory,
+                                private readonly OrderRepositoryInterface $orderRepository)
     {
 
     }
@@ -28,7 +31,7 @@ final class ConvertPaymentAction implements ConvertPaymentActionInterface
         /** @var OrderInterface $order */
         $order = $payment->getOrder();
 
-        if ($order->hasRecurringContents()){
+        if ($order->hasRecurringContents()) {
             foreach ($order->getRecurringItems() as $item) {
                 $item->setStripePriceId($this->stripeService->retrievePriceId($item));
             }

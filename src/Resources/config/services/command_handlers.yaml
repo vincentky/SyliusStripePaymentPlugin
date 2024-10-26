@@ -1,43 +1,39 @@
 parameters:
-  sylius_payum_stripe.command_handler.supported_gateways:
-    - stripe_checkout_session
-    - stripe_js
+    sylius_payum_stripe.command_handler.supported_gateways:
+        - stripe_checkout_session
+        - stripe_js
 
 services:
-
-  VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler:
-    abstract: true
-    arguments:
-      $paymentRepository: '@sylius.repository.payment'
-      $payum: '@payum'
-      $supportedGateways: '%sylius_payum_stripe.command_handler.supported_gateways%'
-
-  sylius_payum_stripe.command_handler.refund:
-    public: true
-    parent: VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler
-    class: VK\SyliusStripePaymentPlugin\CommandHandler\RefundPaymentHandler
-    arguments:
-      $refundRequestFactory: '@sylius_payum_stripe.factory.refund_request'
-    tags:
-      - name: messenger.message_handler
-        bus: sylius.command_bus
-
-  sylius_payum_stripe.command_handler.cancel:
-    public: true
-    parent: VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler
-    class: VK\SyliusStripePaymentPlugin\CommandHandler\CancelPaymentHandler
-    arguments:
-      $cancelRequestFactory: '@sylius_payum_stripe.factory.cancel_request'
-    tags:
-      - name: messenger.message_handler
-        bus: sylius.command_bus
-
-  sylius_payum_stripe.command_handler.capture_authorized:
-    public: true
-    parent: VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler
-    class: VK\SyliusStripePaymentPlugin\CommandHandler\CaptureAuthorizedPaymentHandler
-    arguments:
-      $captureRequestFactory: '@sylius_payum_stripe.factory.capture_request'
-    tags:
-      - name: messenger.message_handler
-        bus: sylius.command_bus
+    VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler:
+        abstract: true
+        arguments:
+            $paymentRepository: '@sylius.repository.payment'
+            $payum: '@payum'
+            $supportedGateways: '%sylius_payum_stripe.command_handler.supported_gateways%'
+    
+    VK\SyliusStripePaymentPlugin\CommandHandler\RefundPaymentHandler:
+        public: true
+        parent: VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler
+        arguments:
+            $refundRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\RefundRequestFactory'
+        tags:
+            -   name: messenger.message_handler
+                bus: sylius.command_bus
+    
+    VK\SyliusStripePaymentPlugin\CommandHandler\CancelPaymentHandler:
+        public: true
+        parent: VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler
+        arguments:
+            $cancelRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\CancelRequestFactory'
+        tags:
+            -   name: messenger.message_handler
+                bus: sylius.command_bus
+    
+    VK\SyliusStripePaymentPlugin\CommandHandler\CaptureAuthorizedPaymentHandler:
+        public: true
+        parent: VK\SyliusStripePaymentPlugin\CommandHandler\AbstractPayumPaymentHandler
+        arguments:
+            $captureRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\CaptureRequestFactory'
+        tags:
+            -   name: messenger.message_handler
+                bus: sylius.command_bus

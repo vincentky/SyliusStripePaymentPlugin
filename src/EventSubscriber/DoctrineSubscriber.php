@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace VK\SyliusStripePaymentPlugin\EventSubscriber;
 
 use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use VK\SyliusStripePaymentPlugin\Entity\ProductVariantInterface;
@@ -12,7 +13,7 @@ use VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface;
 
 final readonly class DoctrineSubscriber implements EventSubscriber
 {
-    public function __construct(private StripeServiceInterface $stripeService)
+    public function __construct(private StripeServiceInterface $stripeService, private EntityManagerInterface $entityManager)
     {
 
     }
@@ -33,6 +34,7 @@ final readonly class DoctrineSubscriber implements EventSubscriber
         switch (true) {
             case $entity instanceof ProductVariantInterface:
                 $this->stripeService->createSubscriptionProduct($entity);
+                $this->entityManager->persist($entity);
                 break;
         }
     }
@@ -44,6 +46,7 @@ final readonly class DoctrineSubscriber implements EventSubscriber
         switch (true) {
             case $entity instanceof ProductVariantInterface:
                 $this->stripeService->updateSubscriptionProduct($entity);
+                $this->entityManager->persist($entity);
                 break;
         }
     }

@@ -1,11 +1,9 @@
 services:
-
-  sylius_payum_stripe.action.stripe_js.convert_payment:
-    public: true
-    class: VK\SyliusStripePaymentPlugin\Action\StripeJs\ConvertPaymentAction
-    arguments:
-      $detailsProvider: '@sylius_payum_stripe.provider.stripe_js.details'
-    tags:
-      - name: payum.action
-        factory: stripe_js
-        alias: sylius_payum_stripe.convert_payment
+    VK\SyliusStripePaymentPlugin\Action\StripeJs\ConvertPaymentAction:
+        public: true
+        arguments:
+            $detailsProvider: '@VK\SyliusStripePaymentPlugin\Provider\StripeJs\DetailsProvider'
+        tags:
+            -   name: payum.action
+                factory: stripe_js
+                alias: sylius_payum_stripe.convert_payment

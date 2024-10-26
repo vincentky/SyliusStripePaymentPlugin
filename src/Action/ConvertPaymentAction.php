@@ -4,20 +4,18 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Action;
 
-use VK\SyliusStripePaymentPlugin\Provider\DetailsProviderInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\Convert;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
+use VK\SyliusStripePaymentPlugin\Provider\DetailsProviderInterface;
+use VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface;
 
 final class ConvertPaymentAction implements ConvertPaymentActionInterface
 {
-    /** @var DetailsProviderInterface */
-    private $detailsProvider;
-
-    public function __construct(DetailsProviderInterface $detailsProvider)
+    public function __construct(private readonly DetailsProviderInterface $detailsProvider, private readonly StripeServiceInterface $stripeService)
     {
-        $this->detailsProvider = $detailsProvider;
+
     }
 
     /** @param Convert $request */
@@ -30,6 +28,12 @@ final class ConvertPaymentAction implements ConvertPaymentActionInterface
         /** @var OrderInterface $order */
         $order = $payment->getOrder();
 
+        if ($order->hasRecurringContents()){
+            foreach ($order->getRecurringItems() as $item) {
+                $item->setStripePriceId($this->stripeService->retrievePriceId($item));
+            }
+        }
+
         $details = $this->detailsProvider->getDetails($order);
 
         $request->setResult($details);
@@ -40,7 +44,6 @@ final class ConvertPaymentAction implements ConvertPaymentActionInterface
         return
             $request instanceof Convert &&
             $request->getSource() instanceof PaymentInterface &&
-            $request->getTo() === 'array'
-        ;
+            $request->getTo() === 'array';
     }
 }

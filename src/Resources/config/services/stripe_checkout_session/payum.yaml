@@ -1,22 +1,31 @@
 services:
-
-  sylius_payum_stripe.action.convert_payment:
-    public: true
-    class: VK\SyliusStripePaymentPlugin\Action\ConvertPaymentAction
-    arguments:
-      $detailsProvider: '@sylius_payum_stripe.provider.details'
-    tags:
-      - name: payum.action
-        factory: stripe_checkout_session
-        alias: sylius_payum_stripe.convert_payment
-
-  sylius_payum_stripe.extension.cancel_existing_payment_intent:
-    public: true
-    class: VK\SyliusStripePaymentPlugin\Extension\CancelExistingPaymentIntentExtension
-    arguments:
-      $expireSessionRequestFactory: '@sylius_payum_stripe.factory.expire_session_request'
-      $allSessionRequestFactory: '@sylius_payum_stripe.factory.all_session_request'
-    tags:
-      - name: payum.extension
-        factory: stripe_checkout_session
-        alias: sylius_payum_stripe.extension.cancel_existing_payment_intent
+    VK\SyliusStripePaymentPlugin\Action\CreateSubscriptionAction:
+        public: true
+        arguments:
+            $subscriptionRepository: '@VK\SyliusStripePaymentPlugin\Repository\SubscriptionRepository'
+            $subscriptionFactory: '@VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory'
+            $orderRepository: '@sylius.repository.order'
+        tags:
+            -   name: payum.action
+                factory: stripe_checkout_session
+                alias: sylius_payum_stripe.create_subscription
+    
+    VK\SyliusStripePaymentPlugin\Action\ConvertPaymentAction:
+        public: true
+        arguments:
+            $detailsProvider: '@VK\SyliusStripePaymentPlugin\Provider\DetailsProvider'
+            $stripeService: '@VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface'
+        tags:
+            -   name: payum.action
+                factory: stripe_checkout_session
+                alias: sylius_payum_stripe.convert_payment
+    
+    VK\SyliusStripePaymentPlugin\Extension\CancelExistingPaymentIntentExtension:
+        public: true
+        arguments:
+            $expireSessionRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactory'
+            $allSessionRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactory'
+        tags:
+            -   name: payum.extension
+                factory: stripe_checkout_session
+                alias: sylius_payum_stripe.extension.cancel_existing_payment_intent

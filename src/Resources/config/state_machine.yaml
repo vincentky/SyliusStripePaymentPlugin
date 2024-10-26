@@ -1,4 +1,5 @@
 imports:
+    - { resource: "@SyliusStripePaymentPlugin/Resources/config/state_machine/payment.yaml" }
     - { resource: "@SyliusStripePaymentPlugin/Resources/config/state_machine/subscription.yaml" }
     - { resource: "@SyliusStripePaymentPlugin/Resources/config/state_machine/subscription_manual.yaml" }
     - { resource: "@SyliusStripePaymentPlugin/Resources/config/state_machine/payment_subscription.yaml" }

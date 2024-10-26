@@ -1,19 +1,15 @@
 services:
-
-  sylius_payum_stripe.state_machine.refund:
-    public: true
-    class: VK\SyliusStripePaymentPlugin\StateMachine\RefundOrderProcessor
-    arguments:
-      $commandBus: '@sylius.command_bus'
-
-  sylius_payum_stripe.state_machine.cancel:
-    public: true
-    class: VK\SyliusStripePaymentPlugin\StateMachine\CancelOrderProcessor
-    arguments:
-      $commandBus: '@sylius.command_bus'
-
-  sylius_payum_stripe.state_machine.capture_authorized:
-    public: true
-    class: VK\SyliusStripePaymentPlugin\StateMachine\CaptureAuthorizedOrderProcessor
-    arguments:
-      $commandBus: '@sylius.command_bus'
+    VK\SyliusStripePaymentPlugin\StateMachine\RefundOrderProcessor:
+        public: true
+        arguments:
+            $commandBus: '@sylius.command_bus'
+    
+    VK\SyliusStripePaymentPlugin\StateMachine\CancelOrderProcessor:
+        public: true
+        arguments:
+            $commandBus: '@sylius.command_bus'
+    
+    VK\SyliusStripePaymentPlugin\StateMachine\CaptureAuthorizedOrderProcessor:
+        public: true
+        arguments:
+            $commandBus: '@sylius.command_bus'

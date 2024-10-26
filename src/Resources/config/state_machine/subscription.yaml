@@ -35,17 +35,17 @@ winzou_state_machine:
             guard:
                 sylius_stripe_payment_plugin_activate_recurring_subscription_guard_for_complete:
                     on: 'complete'
-                    do: [ '@sylius_stripe_payment_plugin.guard.subscription', 'isCompletable' ]
+                    do: [ '@VK\SyliusStripePaymentPlugin\Guard\SubscriptionGuard', 'isCompletable' ]
                     args: [ 'object' ]
                 sylius_stripe_payment_plugin_activate_recurring_subscription_guard_for_abort:
                     on: 'abort'
-                    do: [ '@sylius_stripe_payment_plugin.guard.subscription', 'isEligibleForPaymentsAbort' ]
+                    do: [ '@VK\SyliusStripePaymentPlugin\Guard\SubscriptionGuard', 'isEligibleForPaymentsAbort' ]
                     args: [ 'object' ]
-            after:
-                sylius_stripe_payment_plugin_activate_recurring_subscription_process:
-                    on: ["activate"]
-                    do: ["@sylius_stripe_payment_plugin.processor.subscription_schedule_processor", "processScheduleGeneration"]
-                    args: ["object"]
+            #after:
+            #    sylius_stripe_payment_plugin_activate_recurring_subscription_process:
+            #        on: ["activate"]
+            #        do: ["@sylius_stripe_payment_plugin.processor.subscription_schedule_processor", "processScheduleGeneration"]
+            #        args: ["object"]
 
     subscription_processing:
         class: "%sylius_stripe_payment_plugin.model.subscription.class%"

@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Extension;
 
-use VK\SyliusStripePaymentPlugin\Action\ConvertPaymentActionInterface;
-use VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactoryInterface;
-use VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactoryInterface;
 use Payum\Core\Extension\Context;
 use Payum\Core\Extension\ExtensionInterface;
 use Payum\Core\Request\Convert;
@@ -14,6 +11,9 @@ use Stripe\Checkout\Session;
 use Stripe\Collection;
 use Stripe\PaymentIntent;
 use Sylius\Component\Core\Model\PaymentInterface;
+use VK\SyliusStripePaymentPlugin\Action\ConvertPaymentActionInterface;
+use VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactoryInterface;
+use VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactoryInterface;
 
 /**
  * This extension will cancel a PaymentIntent if there is an existant one
@@ -27,18 +27,12 @@ use Sylius\Component\Core\Model\PaymentInterface;
  */
 final class CancelExistingPaymentIntentExtension implements ExtensionInterface
 {
-    /** @var ExpireSessionRequestFactoryInterface */
-    private $expireSessionRequestFactory;
-
-    /** @var AllSessionRequestFactoryInterface */
-    private $allSessionRequestFactory;
-
     public function __construct(
-        ExpireSessionRequestFactoryInterface $expireSessionRequestFactory,
-        AllSessionRequestFactoryInterface $allSessionRequestFactory
-    ) {
-        $this->expireSessionRequestFactory = $expireSessionRequestFactory;
-        $this->allSessionRequestFactory = $allSessionRequestFactory;
+        private readonly ExpireSessionRequestFactoryInterface $expireSessionRequestFactory,
+        private readonly AllSessionRequestFactoryInterface    $allSessionRequestFactory
+    )
+    {
+
     }
 
     public function onPreExecute(Context $context): void

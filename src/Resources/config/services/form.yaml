@@ -10,17 +10,14 @@ parameters:
 
 services:
     VK\SyliusStripePaymentPlugin\Form\Extension\ProductVariantRecurringExtension:
-        class: VK\SyliusStripePaymentPlugin\Form\Extension\ProductVariantRecurringExtension
         arguments:
             - '@VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProvider'
         tags:
             - { name: 'form.type_extension', extended_type: 'Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType' }
     
-    VK\SyliusStripePaymentPlugin\Form\Transformer\StripeIntervalTransformer:
-        class: VK\SyliusStripePaymentPlugin\Form\Transformer\StripeIntervalTransformer
+    VK\SyliusStripePaymentPlugin\Form\Transformer\StripeIntervalTransformer: ~
         
     VK\SyliusStripePaymentPlugin\Form\Type\StripeIntervalType:
-        class: VK\SyliusStripePaymentPlugin\Form\Type\StripeIntervalType
         arguments:
             - '@VK\SyliusStripePaymentPlugin\Form\Transformer\StripeIntervalTransformer'
         tags:

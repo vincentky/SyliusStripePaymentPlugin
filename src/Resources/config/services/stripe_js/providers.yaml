@@ -1,20 +1,15 @@
 services:
-    sylius_payum_stripe.provider.stripe_js.details:
-        class: VK\SyliusStripePaymentPlugin\Provider\StripeJs\DetailsProvider
+    VK\SyliusStripePaymentPlugin\Provider\StripeJs\DetailsProvider:
         arguments:
-            $amountProvider: '@sylius_payum_stripe.provider.stripe_js.amount'
-            $currencyProvider: '@sylius_payum_stripe.provider.stripe_js.currency'
-            $paymentMethodTypesProvider: '@sylius_payum_stripe.provider.stripe_js.payment_method_types'
+            $amountProvider: '@VK\SyliusStripePaymentPlugin\Provider\StripeJs\AmountProvider'
+            $currencyProvider: '@VK\SyliusStripePaymentPlugin\Provider\StripeJs\CurrencyProvider'
+            $paymentMethodTypesProvider: '@VK\SyliusStripePaymentPlugin\Provider\StripeJs\PaymentMethodTypesProvider'
 
 
-    sylius_payum_stripe.provider.stripe_js.amount:
-        class: VK\SyliusStripePaymentPlugin\Provider\StripeJs\AmountProvider
+    VK\SyliusStripePaymentPlugin\Provider\StripeJs\AmountProvider: ~
 
-    sylius_payum_stripe.provider.stripe_js.currency:
-        class: VK\SyliusStripePaymentPlugin\Provider\StripeJs\CurrencyProvider
+    VK\SyliusStripePaymentPlugin\Provider\StripeJs\CurrencyProvider: ~
 
-
-    sylius_payum_stripe.provider.stripe_js.payment_method_types:
-        class: VK\SyliusStripePaymentPlugin\Provider\StripeJs\PaymentMethodTypesProvider
+    VK\SyliusStripePaymentPlugin\Provider\StripeJs\PaymentMethodTypesProvider:
         arguments:
             $paymentMethodTypes: '%sylius_payum_stripe.payment_method_types%'

@@ -1,6 +1,19 @@
 <div class="ui tab" data-tab="recurring">
     <h3 class="ui dividing header">{{ 'sylius_stripe_payment_plugin.ui.product_variant.tab.recurring'|trans }}</h3>
     <div class="ui segment" id="recurring-variant-settings">
+        {% if form.vars.value.recurring %}
+            {% if form.vars.value.stripeProductId is not empty %}
+                <div class="ui positive message">
+                    <div class="header">Produit associé à Stripe</div>
+                    <p>Le produit est associé à Stripe (Product ID : {{ form.vars.value.stripeProductId }}).</p>
+                </div>
+            {% else %}
+                <div class="ui warning message">
+                    <div class="header">Produit non associé à Stripe</div>
+                    <p>Le produit n'est pas encore associé à Stripe.</p>
+                </div>
+            {% endif %}
+        {% endif %}
         <table class="ui table">
             <tr>
                 <td>

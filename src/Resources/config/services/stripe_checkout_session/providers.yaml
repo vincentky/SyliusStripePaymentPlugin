@@ -1,50 +1,40 @@
 services:
-    sylius_payum_stripe.provider.details:
-        class: VK\SyliusStripePaymentPlugin\Provider\DetailsProvider
+    VK\SyliusStripePaymentPlugin\Provider\DetailsProvider:
         arguments:
-            $customerEmailProvider: '@sylius_payum_stripe.provider.customer_email'
-            $lineItemsProvider: '@sylius_payum_stripe.provider.line_items'
-            $paymentMethodTypesProvider: '@sylius_payum_stripe.provider.payment_method_types'
-            $modeProvider: '@sylius_payum_stripe.provider.mode'
+            $customerEmailProvider: '@VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProvider'
+            $lineItemsProvider: '@VK\SyliusStripePaymentPlugin\Provider\LineItemsProvider'
+            $paymentMethodTypesProvider: '@VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProvider'
+            $modeProvider: '@VK\SyliusStripePaymentPlugin\Provider\ModeProvider'
 
-    sylius_payum_stripe.provider.line_items:
-        class: VK\SyliusStripePaymentPlugin\Provider\LineItemsProvider
+    VK\SyliusStripePaymentPlugin\Provider\LineItemsProvider:
         arguments:
-            $lineItemProvider: '@sylius_payum_stripe.provider.line_item'
-            $shippingLineItemProvider: '@sylius_payum_stripe.provider.shipping_line_item'
+            $lineItemProvider: '@VK\SyliusStripePaymentPlugin\Provider\LineItemProvider'
+            $shippingLineItemProvider: '@VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemProvider'
 
-    sylius_payum_stripe.provider.line_item:
-        class: VK\SyliusStripePaymentPlugin\Provider\LineItemProvider
+    VK\SyliusStripePaymentPlugin\Provider\LineItemProvider:
         arguments:
-            $lineItemImagesProvider: '@sylius_payum_stripe.provider.line_item_images'
-            $lineItemNameProvider: '@sylius_payum_stripe.provider.line_item_name'
+            $lineItemImagesProvider: '@VK\SyliusStripePaymentPlugin\Provider\LineItemImagesProvider'
+            $lineItemNameProvider: '@VK\SyliusStripePaymentPlugin\Provider\LinetItemNameProvider'
 
-    sylius_payum_stripe.provider.line_item_images:
-        class: VK\SyliusStripePaymentPlugin\Provider\LineItemImagesProvider
+    VK\SyliusStripePaymentPlugin\Provider\LineItemImagesProvider:
         arguments:
             $imagineCacheManager: '@liip_imagine.cache.manager'
             $filterName: '%sylius_payum_stripe.line_item_image.imagine_filter%'
             $fallbackImage: '%sylius_payum_stripe.line_item_image.fallback_image%'
             $localhostPattern: '%sylius_payum_stripe.line_item_image.localhost_pattern%'
 
-    sylius_payum_stripe.provider.line_item_name:
-        class: VK\SyliusStripePaymentPlugin\Provider\LinetItemNameProvider
+    VK\SyliusStripePaymentPlugin\Provider\LinetItemNameProvider: ~
 
-    sylius_payum_stripe.provider.shipping_line_item:
-        class: VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemProvider
+    VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemProvider:
         arguments:
-            $shippingLineItemProvider: '@sylius_payum_stripe.provider.shipping_line_item_name'
+            $shippingLineItemProvider: '@VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemNameProvider'
 
-    sylius_payum_stripe.provider.shipping_line_item_name:
-        class: VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemNameProvider
+    VK\SyliusStripePaymentPlugin\Provider\ShippingLineItemNameProvider: ~
 
-    sylius_payum_stripe.provider.customer_email:
-        class: VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProvider
+    VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProvider: ~
 
-    sylius_payum_stripe.provider.payment_method_types:
-        class: VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProvider
+    VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProvider:
         arguments:
             $paymentMethodTypes: '%sylius_payum_stripe.payment_method_types%'
 
-    sylius_payum_stripe.provider.mode:
-        class: VK\SyliusStripePaymentPlugin\Provider\ModeProvider
+    VK\SyliusStripePaymentPlugin\Provider\ModeProvider: ~

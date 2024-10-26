@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace VK\SyliusStripePaymentPlugin\Form\Transformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use VK\SyliusStripePaymentPlugin\Utility\StripeIntervalUtility;
+use VK\SyliusStripePaymentPlugin\Utility\StripeUtility;
 
 final class StripeIntervalTransformer implements DataTransformerInterface
 {
@@ -18,7 +18,7 @@ final class StripeIntervalTransformer implements DataTransformerInterface
             ];
         }
 
-        return StripeIntervalUtility::retrieveStepAndAmountFromInterval($value);
+        return StripeUtility::retrieveStepAndAmountFromInterval($value);
     }
 
     public function reverseTransform($value)

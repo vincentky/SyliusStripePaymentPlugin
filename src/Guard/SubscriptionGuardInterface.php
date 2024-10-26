@@ -1,13 +1,12 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace SyliusMolliePlugin\Guard;
+namespace VK\SyliusStripePaymentPlugin\Guard;
 
-use SyliusMolliePlugin\Entity\MollieSubscriptionInterface;
+use VK\SyliusStripePaymentPlugin\Entity\SubscriptionInterface;
 
 interface SubscriptionGuardInterface
 {
-    public function isCompletable(MollieSubscriptionInterface $subscription): bool;
+    public function isCompletable(SubscriptionInterface $subscription): bool;
 }

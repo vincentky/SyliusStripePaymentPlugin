@@ -1,5 +1,6 @@
 imports:
     - { resource: 'services/command_handlers.yaml' }
+    - { resource: 'services/guard.yaml' }
     - { resource: 'services/factory.yaml' }
     - { resource: 'services/payum.yaml' }
     - { resource: 'services/stripe.yaml' }

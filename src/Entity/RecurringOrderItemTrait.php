@@ -8,53 +8,19 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Core\Model\OrderItemInterface;
 
-trait RecurringOrderTrait
+trait RecurringOrderItemTrait
 {
-    #[ORM\ManyToOne(targetEntity: SubscriptionInterface::class)]
-    #[ORM\JoinColumn(name: 'subscription_id', referencedColumnName: 'id', onDelete: 'RESTRICT')]
-    protected ?SubscriptionInterface $subscription = null;
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $stripePriceId = null;
 
-    public function getSubscription(): ?SubscriptionInterface
+    public function getStripePriceId(): ?string
     {
-        return $this->subscription;
+        return $this->stripePriceId;
     }
 
-    public function setSubscription(?SubscriptionInterface $subscription): void
+    public function setStripePriceId(?string $stripePriceId): void
     {
-        $this->subscription = $subscription;
+        $this->stripePriceId = $stripePriceId;
     }
 
-    public function getRecurringItems(): Collection
-    {
-        return $this
-            ->items
-            ->filter(function (OrderItemInterface $orderItem) {
-                $variant = $orderItem->getVariant();
-
-                return $variant !== null &&
-                    true === $variant->isRecurring();
-            });
-    }
-
-    public function getNonRecurringItems(): Collection
-    {
-        return $this
-            ->items
-            ->filter(function (OrderItemInterface $orderItem) {
-                $variant = $orderItem->getVariant();
-
-                return $variant !== null &&
-                    false === $variant->isRecurring();
-            });
-    }
-
-    public function hasRecurringContents(): bool
-    {
-        return 0 < $this->getRecurringItems()->count();
-    }
-
-    public function hasNonRecurringContents(): bool
-    {
-        return 0 < $this->getNonRecurringItems()->count();
-    }
 }

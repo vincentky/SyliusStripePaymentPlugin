@@ -18,9 +18,6 @@ trait RecurringProductVariantTrait
     private ?string $interval = null;
 
     #[ORM\Column(type: "string", nullable: true)]
-    private ?string $stripePriceId = null;
-
-    #[ORM\Column(type: "string", nullable: true)]
     private ?string $stripeProductId = null;
 
 
@@ -54,15 +51,6 @@ trait RecurringProductVariantTrait
         $this->interval = $interval;
     }
 
-    public function getStripePriceId(): ?string
-    {
-        return $this->stripePriceId;
-    }
-
-    public function setStripePriceId(?string $stripePriceId): void
-    {
-        $this->stripePriceId = $stripePriceId;
-    }
 
     public function getStripeProductId(): ?string
     {

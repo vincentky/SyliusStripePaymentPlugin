@@ -6,6 +6,6 @@ namespace VK\SyliusStripePaymentPlugin\Action;
 
 use Payum\Core\Action\ActionInterface;
 
-interface ConvertPaymentActionInterface extends ActionInterface
+interface CreateSubscriptionActionInterface extends ActionInterface
 {
 }

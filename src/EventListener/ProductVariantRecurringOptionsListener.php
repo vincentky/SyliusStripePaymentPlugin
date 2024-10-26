@@ -13,7 +13,7 @@ final class ProductVariantRecurringOptionsListener
         $menu = $event->getMenu();
         $menu
             ->addChild('recurring')
-            ->setAttribute('template', '@SyliusStripePaymentPlugin/ProductVariant/Tab/_recurring.html.twig')
+            ->setAttribute('template', '@SyliusStripePaymentPlugin/Admin/ProductVariant/Tab/_recurring.html.twig')
             ->setLabel('sylius_stripe_payment_plugin.ui.product_variant.tab.recurring');
     }
 }

@@ -6,6 +6,7 @@ namespace VK\SyliusStripePaymentPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sylius\Component\Core\Model\OrderInterface as SyliusOrder;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
@@ -52,16 +53,16 @@ class Subscription implements SubscriptionInterface
     #[ORM\InverseJoinColumn(name: 'payment_id', referencedColumnName: 'id')]
     protected Collection $payments;
 
-
-    #[ORM\OneToOne(inversedBy: 'subscription', targetEntity: SubscriptionConfiguration::class, cascade: ['persist'])]
-    protected SubscriptionConfigurationInterface $subscriptionConfiguration;
-
+    #[ORM\ManyToMany(targetEntity: SyliusOrder::class)]
+    #[ORM\JoinColumn(name: 'sylius_subscription_order', referencedColumnName: 'id')]
+    #[ORM\InverseJoinColumn(name: 'order_id', referencedColumnName: 'id')]
+    protected Collection $orders;
 
     public function __construct()
     {
-        $this->subscriptionConfiguration = new SubscriptionConfiguration($this);
         $this->payments = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +78,18 @@ class Subscription implements SubscriptionInterface
     public function setState(string $state): void
     {
         $this->state = $state;
+    }
+
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(SyliusOrder $order): void
+    {
+        if (false === $this->orders->contains($order)) {
+            $this->orders->add($order);
+        }
     }
 
     public function getPayments(): Collection

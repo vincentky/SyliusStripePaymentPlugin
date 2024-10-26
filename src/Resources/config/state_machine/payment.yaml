@@ -6,13 +6,13 @@ winzou_state_machine:
                     # By default, this callback is disabled to avoid mistake
                     # you can enable it using this plugin config : `refund_disabled: false`
                     on: ["refund"]
-                    do: ["@sylius_payum_stripe.state_machine.refund", "__invoke"]
+                    do: ['@VK\SyliusStripePaymentPlugin\StateMachine\RefundOrderProcessor', "__invoke"]
                     args: ["object", "event"]
                 sylius_payum_stripe_cancel:
                     on: ["cancel"]
-                    do: ["@sylius_payum_stripe.state_machine.cancel", "__invoke"]
+                    do: ['@VK\SyliusStripePaymentPlugin\StateMachine\CancelOrderProcessor', "__invoke"]
                     args: ["object", "event"]
                 sylius_payum_stripe_complete_authorized:
                     on: ["complete"]
-                    do: ["@sylius_payum_stripe.state_machine.capture_authorized", "__invoke"]
+                    do: ['@VK\SyliusStripePaymentPlugin\StateMachine\CaptureAuthorizedOrderProcessor', "__invoke"]
                     args: ["object", "event"]

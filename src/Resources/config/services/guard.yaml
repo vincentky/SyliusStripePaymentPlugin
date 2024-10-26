@@ -1,0 +1,2 @@
+services:
+    VK\SyliusStripePaymentPlugin\Guard\SubscriptionGuard: ~

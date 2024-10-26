@@ -1,22 +1,20 @@
 services:
+    VK\SyliusStripePaymentPlugin\Factory\CancelRequestFactory: ~
+    
+    VK\SyliusStripePaymentPlugin\Factory\RefundRequestFactory: ~
+    
+    VK\SyliusStripePaymentPlugin\Factory\AuthorizeRequestFactory: ~
+    
+    VK\SyliusStripePaymentPlugin\Factory\CaptureRequestFactory: ~
+    
+    VK\SyliusStripePaymentPlugin\Factory\CancelPaymentIntentRequestFactory: ~
+    
+    VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactory: ~
 
-  sylius_payum_stripe.factory.cancel_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\CancelRequestFactory
-
-  sylius_payum_stripe.factory.refund_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\RefundRequestFactory
-
-  sylius_payum_stripe.factory.authorize_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\AuthorizeRequestFactory
-
-  sylius_payum_stripe.factory.capture_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\CaptureRequestFactory
-
-  sylius_payum_stripe.factory.cancel_payment_intent_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\CancelPaymentIntentRequestFactory
-
-  sylius_payum_stripe.factory.all_session_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\AllSessionRequestFactory
-
-  sylius_payum_stripe.factory.expire_session_request:
-    class: VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactory
+    VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactory: ~
+    
+    VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory:
+        decorates: '@VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory'
+        arguments:
+            $decoratedFactory: '@VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory.inner'
+            $router: '@router'

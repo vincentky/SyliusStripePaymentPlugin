@@ -1,22 +1,19 @@
 services:
-
-  sylius_payum_stripe.api.payment_provider.stripe_js:
-    class: VK\SyliusStripePaymentPlugin\Api\PaymentConfiguration\StripeJsPaymentConfigProvider
-    arguments:
-      $captureProcessor: '@sylius_payum_stripe.api.payum.processor.stripe_js'
-      $factoryName: 'stripe_js'
-    tags:
-      - name: sylius.api.payment_method_handler
-
-  sylius_payum_stripe.api.payum.processor.stripe_js:
-    class: VK\SyliusStripePaymentPlugin\Api\Payum\Processor
-    arguments:
-      $payum: '@payum'
-      $captureRequestFactory: '@sylius_payum_stripe.factory.capture_request'
-      $authorizeRequestFactory: '@sylius_payum_stripe.factory.authorize_request'
-      $afterUrlProvider: '@sylius_payum_stripe.api.payum.after_url.stripe_js'
-
-  sylius_payum_stripe.api.payum.after_url.stripe_js:
-    class: VK\SyliusStripePaymentPlugin\Api\Payum\AfterUrlProvider
-    arguments:
-      $afterPath: 'sylius_shop_homepage'
+    
+    VK\SyliusStripePaymentPlugin\Api\PaymentConfiguration\StripeJsPaymentConfigProvider:
+        arguments:
+            $captureProcessor: '@VK\SyliusStripePaymentPlugin\Api\Payum\Processor'
+            $factoryName: 'stripe_js'
+        tags:
+            -   name: sylius.api.payment_method_handler
+    
+    VK\SyliusStripePaymentPlugin\Api\Payum\Processor:
+        arguments:
+            $payum: '@payum'
+            $captureRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\CaptureRequestFactory'
+            $authorizeRequestFactory: '@VK\SyliusStripePaymentPlugin\Factory\AuthorizeRequestFactory'
+            $afterUrlProvider: '@VK\SyliusStripePaymentPlugin\Api\Payum\AfterUrlProvider'
+    
+    VK\SyliusStripePaymentPlugin\Api\Payum\AfterUrlProvider:
+        arguments:
+            $afterPath: 'sylius_shop_homepage'
