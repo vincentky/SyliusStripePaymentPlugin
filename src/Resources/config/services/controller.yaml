@@ -1,0 +1,4 @@
+services:
+    VK\SyliusStripePaymentPlugin\Controller\SubscriptionController:
+        public: true
+        parent: sylius_stripe_payment_plugin.controller.subscription

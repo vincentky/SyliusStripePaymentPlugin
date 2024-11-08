@@ -19,7 +19,7 @@ sylius_stripe_payment_plugin_admin_subscription_show:
     path: /subscription/{id}
     methods: [GET]
     defaults:
-        _controller: sylius_stripe_payment_plugin.controller.action.admin.subscription_controller::showAction
+        _controller: VK\SyliusStripePaymentPlugin\Controller\SubscriptionController::showAction
         _sylius:
             section: admin
             permission: true
@@ -29,7 +29,7 @@ sylius_stripe_payment_plugin_admin_subscription_cancel:
     path: /subscription/{id}/cancel
     methods: [PUT]
     defaults:
-        _controller: sylius_stripe_payment_plugin.controller.action.admin.subscription_controller::applyStateMachineTransitionAction
+        _controller: VK\SyliusStripePaymentPlugin\Controller\SubscriptionController::applyStateMachineTransitionAction
         _sylius:
             permission: true
             state_machine:
@@ -41,7 +41,7 @@ sylius_stripe_payment_plugin_admin_subscription_pause:
     path: /subscription/{id}/pause
     methods: [PUT]
     defaults:
-        _controller: sylius_stripe_payment_plugin.controller.action.admin.subscription_controller::applyStateMachineTransitionAction
+        _controller: VK\SyliusStripePaymentPlugin\Controller\SubscriptionController::applyStateMachineTransitionAction
         _sylius:
             permission: true
             state_machine:
@@ -53,7 +53,7 @@ sylius_stripe_payment_plugin_admin_subscription_resume:
     path: /subscription/{id}/resume
     methods: [PUT]
     defaults:
-        _controller: sylius_stripe_payment_plugin.controller.action.admin.subscription_controller::applyStateMachineTransitionAction
+        _controller: VK\SyliusStripePaymentPlugin\Controller\SubscriptionController::applyStateMachineTransitionAction
         _sylius:
             permission: true
             state_machine:

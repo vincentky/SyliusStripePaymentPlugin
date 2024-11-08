@@ -16,7 +16,6 @@ interface SubscriptionFactoryInterface extends FactoryInterface
     public function createFromFirstOrderWithOrderItemAndPaymentConfiguration(
         OrderInterface $order,
         OrderItemInterface $orderItem,
-        array $paymentConfiguration = [],
-        string $mandateId = null
+        array $paymentConfiguration = []
     ): SubscriptionInterface;
 }

@@ -6,11 +6,10 @@ namespace VK\SyliusStripePaymentPlugin\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Core\Model\OrderInterface as SyliusOrder;
+use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Customer\Model\CustomerInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\Table(name: 'sylius_subscription')]
@@ -28,14 +27,22 @@ class Subscription implements SubscriptionInterface
     #[ORM\JoinColumn(referencedColumnName: 'id')]
     protected ?CustomerInterface $customer = null;
 
-    #[ORM\Column(type: 'datetime', nullable: false)]
+    #[ORM\Column(type: 'string', nullable: true)]
+    protected string $hostname = '';
+
+    #[ORM\Column(type: 'string', nullable: true)]
+    protected ?string $recurringInterval = '';
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    protected ?int $NumberOfRepetitions;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
     protected \DateTime $createdAt;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     protected ?\DateTime $startedAt = null;
 
     #[ORM\ManyToOne(targetEntity: OrderItemInterface::class)]
-    #[ORM\JoinColumn(referencedColumnName: 'id')]
     protected OrderItemInterface $orderItem;
 
     #[ORM\Column(type: 'string', nullable: false, options: ['default' => 'none'])]
@@ -53,16 +60,10 @@ class Subscription implements SubscriptionInterface
     #[ORM\InverseJoinColumn(name: 'payment_id', referencedColumnName: 'id')]
     protected Collection $payments;
 
-    #[ORM\ManyToMany(targetEntity: SyliusOrder::class)]
-    #[ORM\JoinColumn(name: 'sylius_subscription_order', referencedColumnName: 'id')]
-    #[ORM\InverseJoinColumn(name: 'order_id', referencedColumnName: 'id')]
-    protected Collection $orders;
-
     public function __construct()
     {
         $this->payments = new ArrayCollection();
         $this->createdAt = new \DateTime();
-        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,18 +81,6 @@ class Subscription implements SubscriptionInterface
         $this->state = $state;
     }
 
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(SyliusOrder $order): void
-    {
-        if (false === $this->orders->contains($order)) {
-            $this->orders->add($order);
-        }
-    }
-
     public function getPayments(): Collection
     {
         return $this->payments;
@@ -103,7 +92,6 @@ class Subscription implements SubscriptionInterface
             $this->payments->add($payment);
         }
     }
-
 
     public function getCustomer(): ?CustomerInterface
     {
@@ -128,15 +116,6 @@ class Subscription implements SubscriptionInterface
     public function setStartedAt(?\DateTime $startedAt = null): void
     {
         $this->startedAt = $startedAt;
-    }
-
-    public function getLastOrder(): ?OrderInterface
-    {
-        if ($this->orders->isEmpty()) {
-            return null;
-        }
-
-        return $this->orders->last();
     }
 
     public function getOrderItem(): OrderItemInterface
@@ -192,11 +171,6 @@ class Subscription implements SubscriptionInterface
         $this->paymentState = $paymentState;
     }
 
-    public function getSubscriptionConfiguration(): SubscriptionConfigurationInterface
-    {
-        return $this->subscriptionConfiguration;
-    }
-
     public function getLastPayment(): ?PaymentInterface
     {
         if ($this->payments->isEmpty()) {
@@ -204,5 +178,35 @@ class Subscription implements SubscriptionInterface
         }
 
         return $this->payments->last();
+    }
+
+    public function getHostname(): string
+    {
+        return $this->hostname;
+    }
+
+    public function setHostname(string $hostname): void
+    {
+        $this->hostname = $hostname;
+    }
+
+    public function getRecurringInterval(): ?string
+    {
+        return $this->recurringInterval;
+    }
+
+    public function setRecurringInterval(?string $recurringInterval): void
+    {
+        $this->recurringInterval = $recurringInterval;
+    }
+
+    public function getNumberOfRepetitions(): ?int
+    {
+        return $this->NumberOfRepetitions;
+    }
+
+    public function setNumberOfRepetitions(?int $NumberOfRepetitions): void
+    {
+        $this->NumberOfRepetitions = $NumberOfRepetitions;
     }
 }

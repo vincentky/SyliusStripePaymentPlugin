@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Utility;
 
-use VK\SyliusStripePaymentPlugin\Entity\SubscriptionConfigurationInterface;
+use VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface;
 
 class StripeUtility
 {
@@ -13,7 +13,7 @@ class StripeUtility
         preg_match(
             sprintf(
                 '/^(?<amount>\d{1,})\s(?<step>%s)$/',
-                implode('|', SubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS)
+                implode('|', StripeServiceInterface::SUPPORTED_INTERVAL_STEPS)
             ),
             $interval,
             $matches

@@ -2,9 +2,19 @@ services:
     VK\SyliusStripePaymentPlugin\Action\CreateSubscriptionAction:
         public: true
         arguments:
+            $detailsProvider: '@VK\SyliusStripePaymentPlugin\Provider\DetailsProvider'
+            $stripeService: '@VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface'
+        tags:
+            -   name: payum.action
+                factory: stripe_checkout_session
+                alias: sylius_payum_stripe.create_subscription
+                
+    VK\SyliusStripePaymentPlugin\Action\CreateInternalSubscriptionAction:
+        public: true
+        arguments:
             $subscriptionRepository: '@VK\SyliusStripePaymentPlugin\Repository\SubscriptionRepository'
             $subscriptionFactory: '@VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory'
-            $orderRepository: '@sylius.repository.order'
+            $paymentRepository: '@sylius.repository.payment'
         tags:
             -   name: payum.action
                 factory: stripe_checkout_session

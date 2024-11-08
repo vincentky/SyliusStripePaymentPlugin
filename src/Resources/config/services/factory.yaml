@@ -13,8 +13,15 @@ services:
 
     VK\SyliusStripePaymentPlugin\Factory\ExpireSessionRequestFactory: ~
     
+    #VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory:
+    #    arguments:
+    #        $router: '@router'
     VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory:
-        decorates: '@VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory'
+        class: VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory
+        decorates: sylius_stripe_payment_plugin.factory.subscription
         arguments:
             $decoratedFactory: '@VK\SyliusStripePaymentPlugin\Factory\SubscriptionFactory.inner'
             $router: '@router'
+        public: true
+    
+    

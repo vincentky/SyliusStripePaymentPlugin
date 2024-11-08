@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace VK\SyliusStripePaymentPlugin\Factory;
 
+use Sylius\Component\Core\Model\OrderItemInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\Routing\RouterInterface;
-use VK\SyliusStripePaymentPlugin\Entity\SubscriptionInterface;
 use VK\SyliusStripePaymentPlugin\Entity\OrderInterface;
+use VK\SyliusStripePaymentPlugin\Entity\ProductVariantInterface;
+use VK\SyliusStripePaymentPlugin\Entity\SubscriptionInterface;
+use Webmozart\Assert\Assert;
 
 final class SubscriptionFactory implements SubscriptionFactoryInterface
 {
-    private FactoryInterface $decoratedFactory;
-
-    private RouterInterface $router;
+    // private FactoryInterface $decoratedFactory;
 
     public function __construct(
-        FactoryInterface $decoratedFactory,
-        RouterInterface $router
-    ) {
-        $this->decoratedFactory = $decoratedFactory;
-        $this->router = $router;
+        private readonly FactoryInterface $decoratedFactory,
+        private readonly RouterInterface $router
+    )
+    {
     }
 
     public function createNew(): SubscriptionInterface
@@ -38,7 +38,6 @@ final class SubscriptionFactory implements SubscriptionFactoryInterface
 
         Assert::notNull($order->getCustomer());
         $subscriptionTemplate->setCustomer($order->getCustomer());
-        $subscriptionTemplate->addOrder($order);
 
         /** @var PaymentInterface $payment */
         foreach ($order->getPayments() as $payment) {
@@ -49,11 +48,12 @@ final class SubscriptionFactory implements SubscriptionFactoryInterface
     }
 
     public function createFromFirstOrderWithOrderItemAndPaymentConfiguration(
-        OrderInterface $order,
+        OrderInterface     $order,
         OrderItemInterface $orderItem,
-        array $paymentConfiguration = [],
-        string $mandateId = null
-    ): SubscriptionInterface {
+        array              $paymentConfiguration = [],
+        string             $mandateId = null
+    ): SubscriptionInterface
+    {
         $variant = $orderItem->getVariant();
         if (!$variant) {
             throw new \InvalidArgumentException(
@@ -64,15 +64,10 @@ final class SubscriptionFactory implements SubscriptionFactoryInterface
         $hostname = $routerContext->getHost();
 
         $subscriptionTemplate = $this->createFromFirstOrder($order);
-        $configuration = $subscriptionTemplate->getSubscriptionConfiguration();
-
+        $subscriptionTemplate->setHostName($hostname);
         Assert::notNull($variant->getInterval());
-        Assert::notNull($variant->getTimes());
-        $configuration->setInterval($variant->getInterval());
-        $configuration->setNumberOfRepetitions($variant->getTimes());
-        $configuration->setPaymentDetailsConfiguration($paymentConfiguration);
-        $configuration->setMandateId($mandateId);
-        $configuration->setHostName($hostname);
+        $subscriptionTemplate->setRecurringInterval($variant->getInterval());
+        $subscriptionTemplate->setNumberOfRepetitions($variant->getTimes());
         $subscriptionTemplate->setOrderItem($orderItem);
 
         return $subscriptionTemplate;

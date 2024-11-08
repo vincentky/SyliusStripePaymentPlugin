@@ -26,7 +26,7 @@ sylius_stripe_payment_plugin:
                 state: 'State'
                 started_at: 'Started at'
                 interval: 'Interval'
-                orders: 'Orders'
+                orderItem: 'Order item'
                 recent_failed_payments_count: 'Recent failed payments count'
                 payment_state: 'Recent payment state'
             state:

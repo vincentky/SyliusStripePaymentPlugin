@@ -2,5 +2,17 @@ services:
     _defaults:
         public: true
 
-    VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProvider:
-        class: VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProvider
+    VK\SyliusStripePaymentPlugin\Provider\Form\ResolverGroupProvider: ~
+    VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProvider: ~
+    VK\SyliusStripePaymentPlugin\Provider\LineItemProvider: ~
+    VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProvider: 
+        arguments:
+            $paymentMethodTypes: '@sylius_payum_stripe.payment_method_types'
+    
+    VK\SyliusStripePaymentPlugin\Provider\DetailsProvider:
+        class: VK\SyliusStripePaymentPlugin\Provider\DetailsProvider
+        arguments:
+            $customerEmailProvider: '@VK\SyliusStripePaymentPlugin\Provider\CustomerEmailProvider'
+            $lineItemsProvider: '@VK\SyliusStripePaymentPlugin\Provider\LineItemProvider'
+            $paymentMethodTypesProvider: '@VK\SyliusStripePaymentPlugin\Provider\PaymentMethodTypesProvider'
+            $modeProvider: '@sylius_payum_stripe.provider.mode'

@@ -11,7 +11,7 @@ sylius_grid:
                         type: show
                         options:
                             link:
-                                route: sylius_stripe_payment_plugin_subscription_show
+                                route: sylius_stripe_payment_plugin_admin_subscription_show
                                 parameters:
                                     id: resource.id
             sorting:
@@ -33,12 +33,12 @@ sylius_grid:
                     sortable: paymentState
                     options:
                         template: "@SyliusStripePaymentPlugin/Admin/Subscription/Grid/Field/payment_state.html.twig"
-                orders:
+                orderItem:
                     type: twig
-                    label: sylius_stripe_payment_plugin.ui.subscription.fields.orders
+                    label: sylius_stripe_payment_plugin.ui.subscription.fields.orderItem
                     path: .
                     options:
-                        template: "@SyliusStripePaymentPlugin/Admin/Subscription/Grid/Field/orders.html.twig"
+                        template: "@SyliusStripePaymentPlugin/Admin/Subscription/Grid/Field/order_item.html.twig"
 
                 createdAt:
                     type: datetime
