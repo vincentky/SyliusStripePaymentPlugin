@@ -10,28 +10,26 @@
     </tr>
     </thead>
     <tbody>
-    {% for item in subscription.orders %}
         <tr>
             <td>
-                {{ item.createdAt | date ('d-m-Y H:i:s') }}
+                {{ subscription.orderItem.order.createdAt | date ('d-m-Y H:i:s') }}
             </td>
             <td>
-                <a href="{{ path('sylius_admin_order_show', {id: item.id}) }}" target="_blank">#{{ item.number }}</a>
+                <a href="{{ path('sylius_admin_order_show', {id: subscription.orderItem.order.id}) }}" target="_blank">#{{ subscription.orderItem.order.number }}</a>
             </td>
             <td>
-                {% include "@SyliusUi/Grid/Field/state.html.twig" with {data: item.state, options: {vars: {labels: '@SyliusAdmin/Order/Label/State'}}} %}
+                {% include "@SyliusUi/Grid/Field/state.html.twig" with {data: subscription.orderItem.order.state, options: {vars: {labels: '@SyliusAdmin/Order/Label/State'}}} %}
             </td>
             <td>
-                {% include "@SyliusUi/Grid/Field/state.html.twig" with {data: item.paymentState, options: {vars: {labels: '@SyliusAdmin/Order/Label/PaymentState'}}} %}
+                {% include "@SyliusUi/Grid/Field/state.html.twig" with {data: subscription.orderItem.order.paymentState, options: {vars: {labels: '@SyliusAdmin/Order/Label/PaymentState'}}} %}
             </td>
             <td>
-                {% include "@SyliusAdmin/Order/Grid/Field/total.html.twig" with {data: item} %}
+                {% include "@SyliusAdmin/Order/Grid/Field/total.html.twig" with {data: subscription.orderItem.order} %}
             </td>
             <td>
-                {{ item.currencyCode }}
+                {{ subscription.orderItem.order.currencyCode }}
             </td>
         </tr>
-    {% endfor %}
     </tbody>
 </table>
 

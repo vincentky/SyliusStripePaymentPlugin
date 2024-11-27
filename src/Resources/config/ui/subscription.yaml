@@ -82,20 +82,20 @@ sylius_ui:
                     priority: 55
                     context:
                         event: sylius_stripe_payment_plugin.admin.subscription.show.contents.after_subscription_contents
-
-                before_subscription_schedule_legacy:
-                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
-                    priority: 50
-                    context:
-                        event: sylius_stripe_payment_plugin.admin.subscription.show.contents.before_subscription_schedule_legacy
-                subscription_schedule:
-                    template: "@SyliusStripePaymentPlugin/Admin/Subscription/Show/_subscriptionScheduleWidget.html.twig"
-                    priority: 45
-                after_subscription_schedule_legacy:
-                    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
-                    priority: 40
-                    context:
-                        event: sylius_stripe_payment_plugin.admin.subscription.show.contents.after_subscription_schedule_legacy
+                    
+                #before_subscription_schedule_legacy:
+                #    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                #    priority: 50
+                #    context:
+                #        event: sylius_stripe_payment_plugin.admin.subscription.show.contents.before_subscription_schedule_legacy
+                #subscription_schedule:
+                #    template: "@SyliusStripePaymentPlugin/Admin/Subscription/Show/_subscriptionScheduleWidget.html.twig"
+                #    priority: 45
+                #after_subscription_schedule_legacy:
+                #    template: "@SyliusUi/Block/_legacySonataEvent.html.twig"
+                #    priority: 40
+                #    context:
+                #        event: sylius_stripe_payment_plugin.admin.subscription.show.contents.after_subscription_schedule_legacy
 
                 after_contents_legacy:
                     template: "@SyliusUi/Block/_legacySonataEvent.html.twig"

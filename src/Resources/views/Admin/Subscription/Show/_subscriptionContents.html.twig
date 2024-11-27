@@ -13,9 +13,9 @@
     </tr>
     </thead>
     <tbody>
-        {% include '@SyliusAdmin/Order/Show/Summary/_item.html.twig' with {item: subscription.orderItem, order: subscription.orders.first} %}
+        {% include '@SyliusAdmin/Order/Show/Summary/_item.html.twig' with {item: subscription.orderItem, order: subscription.orderItem.order} %}
     </tbody>
     <tfoot>
-    {% include '@SyliusAdmin/Order/Show/Summary/_totals.html.twig' with {item: subscription.orderItem, order: subscription.orders.last} %}
+    {% include '@SyliusAdmin/Order/Show/Summary/_totals.html.twig' with {item: subscription.orderItem, order: subscription.orderItem.order} %}
     </tfoot>
 </table>

@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use VK\SyliusStripePaymentPlugin\Entity\SubscriptionConfigurationInterface;
+use VK\SyliusStripePaymentPlugin\Service\StripeServiceInterface;
 
 final class StripeIntervalType extends AbstractType
 {
@@ -39,8 +39,8 @@ final class StripeIntervalType extends AbstractType
         ]);
         $builder->add('step', ChoiceType::class, [
             'choices' => array_combine(
-                SubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS,
-                SubscriptionConfigurationInterface::SUPPORTED_INTERVAL_STEPS
+                StripeServiceInterface::SUPPORTED_INTERVAL_STEPS,
+                StripeServiceInterface::SUPPORTED_INTERVAL_STEPS
             ),
             'label' => false,
             'error_bubbling' => false,

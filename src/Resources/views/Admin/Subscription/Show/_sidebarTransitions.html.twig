@@ -1,4 +1,4 @@
-{% set graph = constant("SyliusStripePaymentPlugin\\Transitions\\RecurringTransitions::GRAPH_MANUAL") %}
+{% set graph = constant("VK\\SyliusStripePaymentPlugin\\Transition\\RecurringTransitions::GRAPH_MANUAL") %}
 {% set state_to_icons_map = {
     pause: 'pause',
     resume: 'forward',
@@ -14,6 +14,8 @@
     <h3 class="ui dividing header">{{ 'sylius_stripe_payment_plugin.ui.subscription.transitions.block_name'|trans }}</h3>
     <div class="ui relaxed divided list" id="sylius-transitions">
         <div class="ui form" id="subscription-transitions">
+            {{ dump(subscription) }}
+            {{ dump(graph) }}
             {% for transition in sm_possible_transitions(subscription, graph) %}
                 {% include "@SyliusUi/Grid/Action/applyTransition.html.twig" with {
                     data: subscription,
@@ -21,7 +23,7 @@
                         transition: transition,
                         graph: graph,
                         link: {
-                            route: 'sylius_stripe_payment_plugin_subscription_' ~ transition,
+                            route: 'sylius_stripe_payment_plugin_admin_subscription' ~ transition,
                             parameters: {
                                 id: subscription.id
                             }

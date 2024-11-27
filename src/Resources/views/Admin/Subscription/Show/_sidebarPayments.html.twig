@@ -1,4 +1,4 @@
-{% set order = subscription.orders | last %}
+{% set order = subscription.orderItem.order %}
 {% if order.hasPayments %}
 <div class="ui segment" id="payment-state">
     {% include '@SyliusAdmin/Order/Label/PaymentState/' ~ order.paymentState ~ '.html.twig' with { 'value': 'sylius.ui.' ~ order.paymentState, 'attached': true } %}

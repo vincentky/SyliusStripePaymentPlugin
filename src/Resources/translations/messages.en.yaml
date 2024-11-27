@@ -5,6 +5,8 @@ sylius_stripe_payment_plugin:
                 recurring: 'Recurring settings'
         subscriptions: 'Subscriptions'
         recurring_payments: 'Recurring payments'
+        breadcrumbs:
+            subscriptions: 'Subscriptions'
         subscription_list: ''
         subscription:
             block_name: 'Subscription'

@@ -5,5 +5,5 @@
 {% set customer = subscription.customer %}
 
 {% block content %}
-    {{ sylius_template_event('sylius_stripe_payment_plugin_admin.subscription.show.content', _context) }}
+    {{ sylius_template_event('sylius_stripe_payment_plugin.admin.subscription.show.content', _context) }}
 {% endblock %}

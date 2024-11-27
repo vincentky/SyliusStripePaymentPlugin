@@ -11,12 +11,12 @@
                 </div>
                 <div class="item">
                     {{ 'sylius_stripe_payment_plugin.ui.subscription.subscription_duration' | trans({
-                        '%times%': subscription.subscriptionConfiguration.numberOfRepetitions,
-                        '%interval%': subscription.subscriptionConfiguration.interval
+                        '%times%': subscription.numberOfRepetitions,
+                        '%interval%': subscription.recurringInterval
                     }) }}
                 </div>
                 <div class="item">
-                    <strong>{{ subscription.orders | length }} / {{ subscription.subscriptionConfiguration.numberOfRepetitions }}</strong>
+                    <strong>{{ subscription.orderItem.variantName }}</strong>
                 </div>
             </div>
         </div>
